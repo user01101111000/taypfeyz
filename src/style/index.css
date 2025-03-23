@@ -4,7 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-border-header: #454545;
+    --color-border-header: #333333;
     --color-text-color-1: #ffffff;
     --color-text-color-2: #9f9f9f;
 }
@@ -135,7 +135,7 @@ body {
 .loader {
     width: 48px;
     height: 48px;
-    border: 5px solid;
+    border: 3px solid;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;

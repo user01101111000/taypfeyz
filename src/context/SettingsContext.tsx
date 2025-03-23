@@ -4,6 +4,7 @@ import {toast} from "sonner";
 
 const initialData: SettingsParametersProps = {
     fontSize: 16,
+    rootName: "RootObject",
     mapVisible: true,
     suggestions: true,
     folding: true,
@@ -19,6 +20,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const settings: SettingsParametersProps = localData ? (JSON.parse(localData) as SettingsParametersProps) : initialData;
 
     const [fontSize, setFontSize] = React.useState<number>(settings.fontSize);
+    const [rootName, setRootName] = React.useState<string>(settings.rootName);
     const [mapVisible, setMapVisible] = React.useState<boolean>(settings.mapVisible);
     const [suggestions, setSuggestions] = React.useState<boolean>(settings.suggestions);
     const [folding, setFolding] = React.useState<boolean>(settings.folding);
@@ -28,6 +30,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
 
     const reset: VoidFunction = (): void => {
         setFontSize(initialData.fontSize);
+        setRootName(initialData.rootName);
         setMapVisible(initialData.mapVisible);
         setSuggestions(initialData.suggestions);
         setFolding(initialData.folding);
@@ -43,6 +46,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
 
     const save: (data: SettingsParametersProps) => void = (data: SettingsParametersProps): void => {
         setFontSize(data.fontSize);
+        setRootName(data.rootName);
         setMapVisible(data.mapVisible);
         setSuggestions(data.suggestions);
         setFolding(data.folding);
@@ -59,12 +63,13 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
 
     const data: SettingsContextProps = {
         parameters: {
-            fontSize: fontSize,
-            mapVisible: mapVisible,
-            suggestions: suggestions,
-            folding: folding,
-            showErrors: showErrors,
-            mouseWheelZoom: mouseWheelZoom
+            fontSize,
+            rootName,
+            mapVisible,
+            suggestions,
+            folding,
+            showErrors,
+            mouseWheelZoom,
         },
         save,
         reset

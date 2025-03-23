@@ -8,6 +8,7 @@ export type SettingsContextProps = {
 
 export type SettingsParametersProps = {
     fontSize: number,
+    rootName: string,
     mapVisible: boolean,
     folding: boolean,
     suggestions: boolean,

@@ -21,38 +21,37 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
         setJsonCode(value || '');
     }
 
-    console.log(jsonCode)
 
-    return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl">
+    return <div
+        className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl full_editor">
         <div
             className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-orange-500 lg:py-4">
 
-            <p className="font-extrabold">JSON Editor</p>
+            <p className="font-extrabold text-[.8rem] lg:text-[1rem]">JSON Editor</p>
 
             <div className="flex items-center justify-center gap-3">
 
 
                 <CustomToolTip key="copy" tooltip="Copy">
-                    <Copy className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                    <Copy aria-label="copy button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
                         if (jsonCode) copy_fn({text: jsonCode, message: "Copied."});
                     }}/>
                 </CustomToolTip>
 
 
-                <CustomToolTip key="download" tooltip="Download">
-                    <Download className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                <CustomToolTip key="download" tooltip="Download as JSON File">
+                    <Download aria-label="download button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
                         if (jsonCode) download_as({content: jsonCode, file_type: "json"})
                     }}/>
                 </CustomToolTip>
 
 
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
-                    <X className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                    <X aria-label="remove all code button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
                         setJsonCode('');
                         setCode('');
                     }}/>
                 </CustomToolTip>
-
 
             </div>
         </div>

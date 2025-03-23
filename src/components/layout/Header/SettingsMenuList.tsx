@@ -10,6 +10,7 @@ import {useSettings} from "@/context/SettingsContext.tsx";
 
 const schema = z.object({
     fontSize: z.number().min(10).max(30),
+    rootName: z.string(),
     mapVisible: z.boolean(),
     folding: z.boolean(),
     suggestions: z.boolean(),
@@ -34,7 +35,8 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             folding: parameters.folding,
             suggestions: parameters.suggestions,
             showErrors: parameters.showErrors,
-            mouseWheelZoom: parameters.mouseWheelZoom
+            mouseWheelZoom: parameters.mouseWheelZoom,
+            rootName: parameters.rootName
         }
     });
 
@@ -54,9 +56,19 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         <div className="flex items-center justify-between">
 
             <p>Font size</p>
-            <Input type="number" max={30}
+            <Input key="fontSize" type="number" max={30}
                    min={10} {...register("fontSize", {valueAsNumber: true})}
                    className="w-18 text-center appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-noneappearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
+        </div>
+
+
+        {/*------------------------- Root Name -------------------------*/}
+
+        <div className="flex items-center justify-between">
+
+            <p>Root Name</p>
+            <Input key="rootName" type="text" {...register("rootName")}
+                   className="w-25 text-center"/>
         </div>
 
 
