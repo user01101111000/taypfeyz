@@ -6,7 +6,7 @@
 @theme {
     --color-border-header: #454545;
     --color-text-color-1: #ffffff;
-    --color-text-color-2: #838383;
+    --color-text-color-2: #9f9f9f;
 }
 
 :root {
@@ -129,4 +129,24 @@
 body {
     font-family: "Geist", sans-serif;
     color: var(--color-text-color-1);
+}
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

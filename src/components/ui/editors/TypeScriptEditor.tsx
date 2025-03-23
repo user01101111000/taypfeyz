@@ -3,6 +3,10 @@ import Editor from '@monaco-editor/react';
 import {useSettings} from "@/context/SettingsContext.tsx";
 import JsonToTS from "json-to-ts"
 import {Copy, Download} from "lucide-react";
+import copy_fn from "@/utils/copy_fn.ts";
+import download_as from "@/utils/download_as.ts";
+import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
+import Loader from "@/components/ui/Loader.tsx";
 
 type TypeScriptEditorProps = {
     code: string,
@@ -17,15 +21,10 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
 
     React.useEffect((): void => {
 
-
         try {
-
-
             if (code) {
 
                 const my_code: {} | [] = JSON.parse(code);
-
-                console.log("isledi")
 
                 let interface_string: string = "";
 
@@ -43,9 +42,7 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
 
                 setInterfaceCode(interface_string);
 
-            }
-
-            else setInterfaceCode("// Only raed")
+            } else setInterfaceCode("")
 
 
         } catch (e) {
@@ -56,16 +53,28 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
 
     }, [code])
 
-    return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3">
+    return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl">
 
         <div
-            className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2">
+            className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-blue-900 lg:py-4">
 
             <p className="font-extrabold">TypeScript Editor</p>
 
             <div className="flex items-center justify-center gap-3">
-                <Copy className="h-4 w-4 cursor-pointer"/>
-                <Download className="h-4 w-4 cursor-pointer"/>
+
+                <CustomToolTip key="copy" tooltip="Copy">
+                    <Copy className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                        if (interfaceCode) copy_fn({text: interfaceCode, message: "Copied."});
+                    }}/>
+                </CustomToolTip>
+
+                <CustomToolTip key="download" tooltip="Download">
+                    <Download className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                        if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"})
+                    }}/>
+                </CustomToolTip>
+
+
             </div>
         </div>
 
@@ -80,8 +89,12 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                 minimap: {
                     enabled: parameters.mapVisible,
                 },
+                quickSuggestions: parameters.suggestions,
+                folding: parameters.folding,
+                renderValidationDecorations: parameters.showErrors ? "on" : "off",
+                mouseWheelZoom: parameters.mouseWheelZoom,
             }}
-            loading="Yuklenir..."
+            loading={<Loader color="oklch(0.379 0.146 265.522)"/>}
             defaultValue="// Only Read"
             value={interfaceCode}
         />
