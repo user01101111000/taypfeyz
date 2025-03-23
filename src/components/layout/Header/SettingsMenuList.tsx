@@ -2,22 +2,11 @@ import React from "react";
 import {Input} from "@/components/ui/input.tsx";
 import {Checkbox} from "@/components/ui/checkbox.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {z} from "zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {SettingsParametersProps} from "@/types/context_types.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useSettings} from "@/context/SettingsContext.tsx";
-
-const schema = z.object({
-    fontSize: z.number().min(10).max(30),
-    rootName: z.string(),
-    mapVisible: z.boolean(),
-    folding: z.boolean(),
-    suggestions: z.boolean(),
-    showErrors: z.boolean(),
-    mouseWheelZoom: z.boolean(),
-})
-
+import schema from "@/utils/schema.ts";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -48,7 +37,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
     }
 
 
-    return <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+    return <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 select-none">
 
 
         {/*------------------------- Font size -------------------------*/}
@@ -131,6 +120,17 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <Checkbox key="mouseWheelZoom" checked={watch("mouseWheelZoom")} onCheckedChange={(checked) => {
                 setValue("mouseWheelZoom", checked as boolean);
             }} {...register("mouseWheelZoom")} className="cursor-pointer"/>
+
+
+        </div>
+
+
+        {/*------------------------- Auto Save -------------------------*/}
+
+        <div className="flex items-center justify-between">
+
+            <p>Auto Save</p>
+            <p className="opacity-50">Enabled</p>
 
 
         </div>

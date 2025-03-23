@@ -19,6 +19,9 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
     const handleChange: (value: string | undefined) => void = (value: string | undefined): void => {
         setCode(value || '');
         setJsonCode(value || '');
+
+
+        localStorage.setItem("code", value || '');
     }
 
 
@@ -73,6 +76,13 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
                 mouseWheelZoom: parameters.mouseWheelZoom,
             }}
             loading={<Loader color="oklch(0.705 0.213 47.604)"/>}
+            onMount={(): void => {
+                const code: string | null = window.localStorage.getItem("code");
+                if (code) {
+                    setJsonCode(code);
+                    setCode(code);
+                }
+            }}
         />
     </div>
 };
