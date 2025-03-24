@@ -14,6 +14,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const [rootName, setRootName] = React.useState<string>(settings.rootName);
     const [prefix, setPrefix] = React.useState<string>(settings.prefix);
     const [namespace, setNamespace] = React.useState<string>(settings.namespace);
+    const [flow, setFlow] = React.useState<boolean>(settings.flow);
     const [mapVisible, setMapVisible] = React.useState<boolean>(settings.mapVisible);
     const [suggestions, setSuggestions] = React.useState<boolean>(settings.suggestions);
     const [folding, setFolding] = React.useState<boolean>(settings.folding);
@@ -25,6 +26,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setRootName(settings_initial_data.rootName);
         setPrefix(settings_initial_data.prefix);
         setNamespace(settings_initial_data.namespace);
+        setFlow(settings_initial_data.flow);
         setMapVisible(settings_initial_data.mapVisible);
         setSuggestions(settings_initial_data.suggestions);
         setFolding(settings_initial_data.folding);
@@ -43,6 +45,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setRootName(data.rootName);
         setPrefix(data.prefix);
         setNamespace(data.namespace);
+        setFlow(data.flow);
         setMapVisible(data.mapVisible);
         setSuggestions(data.suggestions);
         setFolding(data.folding);
@@ -62,6 +65,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
             rootName,
             prefix,
             namespace,
+            flow,
             mapVisible,
             suggestions,
             folding,

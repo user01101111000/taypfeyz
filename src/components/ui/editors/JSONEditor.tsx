@@ -37,7 +37,7 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
     return <div
         className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl full_editor">
         <div
-            className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-orange-700 lg:py-4">
+            className="py-3 pl-10 pr-7 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-orange-700 lg:py-4">
 
             <p className="font-extrabold text-[.8rem] lg:text-[1rem]">JSON Editor</p>
 

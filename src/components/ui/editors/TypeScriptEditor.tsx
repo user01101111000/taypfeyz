@@ -36,7 +36,7 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                     rootName: parameters.rootName,
                     prefix: parameters.prefix,
                     namespace: parameters.namespace,
-                    flow: true
+                    flow: parameters.flow
                 });
 
                 setInterfaceCode(interface_code);
@@ -49,12 +49,12 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
         }
 
 
-    }, [code, parameters.rootName, parameters.prefix, parameters.namespace])
+    }, [code, parameters.rootName, parameters.prefix, parameters.namespace, parameters.flow])
 
     return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl">
 
         <div
-            className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-blue-900 lg:py-4">
+            className="py-3 pl-10 pr-7 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-blue-900 lg:py-4">
 
             <p className="font-extrabold text-[.8rem] lg:text-[1rem] text-nowrap">TypeScript Editor</p>
 

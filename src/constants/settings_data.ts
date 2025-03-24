@@ -5,6 +5,7 @@ const settings_initial_data: SettingsParametersProps = {
     rootName: "RootObject",
     prefix: "I",
     namespace: "",
+    flow: false,
     mapVisible: true,
     suggestions: true,
     folding: true,

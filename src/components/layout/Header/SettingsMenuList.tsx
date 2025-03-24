@@ -27,7 +27,8 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             mouseWheelZoom: parameters.mouseWheelZoom,
             rootName: parameters.rootName,
             prefix: parameters.prefix,
-            namespace: parameters.namespace
+            namespace: parameters.namespace,
+            flow: parameters.flow
         }
     });
 
@@ -81,6 +82,18 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                    className="w-25 text-center"/>
         </div>
 
+
+        {/*------------------------- Flow -------------------------*/}
+
+        <div className="flex items-center justify-between">
+
+            <p>Flow</p>
+            <Checkbox key="flow" checked={watch("flow")} onCheckedChange={(checked) => {
+                setValue("flow", checked as boolean);
+            }} {...register("flow")} className="cursor-pointer"/>
+
+
+        </div>
 
 
         {/*------------------------- Map Visible -------------------------*/}
