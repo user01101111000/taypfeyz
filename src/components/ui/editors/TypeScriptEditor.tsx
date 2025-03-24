@@ -1,12 +1,12 @@
 import React from "react";
 import Editor from '@monaco-editor/react';
 import {useSettings} from "@/context/SettingsContext.tsx";
-import JsonToTS from "json-to-ts"
 import {Copy, Download} from "lucide-react";
 import copy_fn from "@/utils/copy_fn.ts";
 import download_as from "@/utils/download_as.ts";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import Loader from "@/components/ui/Loader.tsx";
+import {json2ts} from "json-ts"
 
 import {
     DropdownMenu,
@@ -33,23 +33,11 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
         try {
             if (code) {
 
-                const my_code: {} | [] = JSON.parse(code);
+                const interface_code: string = json2ts(code, {
+                    rootName: parameters.rootName
+                });
 
-                let interface_string: string = "";
-
-                JsonToTS(my_code, {rootName: parameters.rootName || "RootObject"}).forEach((typeInterface: string, i: number, arr: string[]): void => {
-
-
-                    if (i === arr.length - 1) {
-                        interface_string += typeInterface;
-                    } else {
-                        interface_string += typeInterface + "\n\n"
-
-                    }
-                }, {});
-
-
-                setInterfaceCode(interface_string);
+                setInterfaceCode(interface_code);
 
             } else setInterfaceCode("")
 
