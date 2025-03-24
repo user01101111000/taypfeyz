@@ -9,6 +9,8 @@ export type SettingsContextProps = {
 export type SettingsParametersProps = {
     fontSize: number,
     rootName: string,
+    prefix : string,
+    namespace: string,
     mapVisible: boolean,
     folding: boolean,
     suggestions: boolean,

@@ -24,7 +24,6 @@ type TypeScriptEditorProps = {
 
 const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEditorProps): React.JSX.Element => {
 
-
     const [interfaceCode, setInterfaceCode] = React.useState('');
     const {parameters} = useSettings();
 
@@ -34,7 +33,10 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
             if (code) {
 
                 const interface_code: string = json2ts(code, {
-                    rootName: parameters.rootName
+                    rootName: parameters.rootName,
+                    prefix: parameters.prefix,
+                    namespace: parameters.namespace,
+                    flow: true
                 });
 
                 setInterfaceCode(interface_code);
@@ -43,12 +45,11 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
 
 
         } catch (e) {
-            console.log("error", e)
             setInterfaceCode("// This format not supported")
         }
 
 
-    }, [code, parameters.rootName])
+    }, [code, parameters.rootName, parameters.prefix, parameters.namespace])
 
     return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl">
 
@@ -73,7 +74,7 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                         <DropdownMenuLabel>Download as</DropdownMenuLabel>
                         <DropdownMenuSeparator/>
 
-                        <DropdownMenuItem onClick={(): void => {
+                        <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"})
                         }}>
                             TS
@@ -82,7 +83,7 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                             </DropdownMenuShortcut>
                         </DropdownMenuItem>
 
-                        <DropdownMenuItem onClick={(): void => {
+                        <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (interfaceCode) download_as({content: interfaceCode, file_type: "txt"});
                         }}>
                             TXT
@@ -115,7 +116,6 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                 mouseWheelZoom: parameters.mouseWheelZoom,
             }}
             loading={<Loader color="oklch(0.379 0.146 265.522)"/>}
-            defaultValue="// Only Read"
             value={interfaceCode}
         />
     </div>

@@ -31,15 +31,13 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
         setCode(value || '');
         setJsonCode(value || '');
 
-
         localStorage.setItem("code", value || '');
     }
-
 
     return <div
         className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl full_editor">
         <div
-            className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-orange-500 lg:py-4">
+            className="py-3 px-10 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-orange-700 lg:py-4">
 
             <p className="font-extrabold text-[.8rem] lg:text-[1rem]">JSON Editor</p>
 
@@ -61,7 +59,7 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
                         <DropdownMenuLabel>Download as</DropdownMenuLabel>
                         <DropdownMenuSeparator/>
 
-                        <DropdownMenuItem onClick={(): void => {
+                        <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (jsonCode) download_as({content: jsonCode, file_type: "json"})
                         }}>
                             JSON
@@ -70,7 +68,7 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
                             </DropdownMenuShortcut>
                         </DropdownMenuItem>
 
-                        <DropdownMenuItem onClick={(): void => {
+                        <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (jsonCode) download_as({content: jsonCode, file_type: "txt"});
                         }}>
                             TXT
@@ -118,6 +116,7 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
                     setJsonCode(code);
                     setCode(code);
                 }
+
             }}
         />
     </div>

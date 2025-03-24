@@ -25,7 +25,9 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             suggestions: parameters.suggestions,
             showErrors: parameters.showErrors,
             mouseWheelZoom: parameters.mouseWheelZoom,
-            rootName: parameters.rootName
+            rootName: parameters.rootName,
+            prefix: parameters.prefix,
+            namespace: parameters.namespace
         }
     });
 
@@ -59,6 +61,26 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <Input key="rootName" type="text" {...register("rootName")}
                    className="w-25 text-center"/>
         </div>
+
+        {/*------------------------- Prefix -------------------------*/}
+
+        <div className="flex items-center justify-between">
+
+            <p>Prefix</p>
+            <Input key="prefix" type="text" {...register("prefix")}
+                   className="w-25 text-center"/>
+        </div>
+
+
+        {/*------------------------- Namespace -------------------------*/}
+
+        <div className="flex items-center justify-between">
+
+            <p>Namespace</p>
+            <Input key="namespace" type="text" {...register("namespace")}
+                   className="w-25 text-center"/>
+        </div>
+
 
 
         {/*------------------------- Map Visible -------------------------*/}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Allow: /home
+Sitemap: https://taypfeyz.vercel.app/sitemap.xml
