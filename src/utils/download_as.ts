@@ -14,10 +14,10 @@ const download_as: (data: DownloadProps) => void = (data: DownloadProps): void =
             break;
 
         case "json":
-            type = "application/json;charset=utf-8"
+            type = "application/json;charset=utf-8";
             break;
 
-        default:
+        case "txt":
             type = "text/plain;charset=utf-8";
             break;
     }

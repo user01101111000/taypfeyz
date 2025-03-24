@@ -8,6 +8,16 @@ import download_as from "@/utils/download_as.ts";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import Loader from "@/components/ui/Loader.tsx";
 
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+    DropdownMenuShortcut,
+} from "@/components/ui/dropdown-menu"
+
 type TypeScriptEditorProps = {
     code: string,
 };
@@ -67,11 +77,34 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                     }}/>
                 </CustomToolTip>
 
-                <CustomToolTip key="download" tooltip="Download as TS File">
-                    <Download aria-label="download button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
-                        if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"})
-                    }}/>
-                </CustomToolTip>
+                <DropdownMenu>
+                    <DropdownMenuTrigger>
+                        <Download aria-label="download button" className="h-4 w-4 cursor-pointer"/>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuLabel>Download as</DropdownMenuLabel>
+                        <DropdownMenuSeparator/>
+
+                        <DropdownMenuItem onClick={(): void => {
+                            if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"})
+                        }}>
+                            TS
+                            <DropdownMenuShortcut>
+                                <Download/>
+                            </DropdownMenuShortcut>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem onClick={(): void => {
+                            if (interfaceCode) download_as({content: interfaceCode, file_type: "txt"});
+                        }}>
+                            TXT
+                            <DropdownMenuShortcut>
+                                <Download/>
+                            </DropdownMenuShortcut>
+                        </DropdownMenuItem>
+
+                    </DropdownMenuContent>
+                </DropdownMenu>
 
 
             </div>

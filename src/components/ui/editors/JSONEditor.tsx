@@ -7,6 +7,17 @@ import download_as from "@/utils/download_as.ts";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import Loader from "@/components/ui/Loader.tsx";
 
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+    DropdownMenuShortcut,
+} from "@/components/ui/dropdown-menu"
+
+
 type JSONEditorProps = {
     setCode: React.Dispatch<React.SetStateAction<string>>
 };
@@ -42,17 +53,42 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
                 </CustomToolTip>
 
 
-                <CustomToolTip key="download" tooltip="Download as JSON File">
-                    <Download aria-label="download button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
-                        if (jsonCode) download_as({content: jsonCode, file_type: "json"})
-                    }}/>
-                </CustomToolTip>
+                <DropdownMenu>
+                    <DropdownMenuTrigger>
+                        <Download aria-label="download button" className="h-4 w-4 cursor-pointer"/>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuLabel>Download as</DropdownMenuLabel>
+                        <DropdownMenuSeparator/>
+
+                        <DropdownMenuItem onClick={(): void => {
+                            if (jsonCode) download_as({content: jsonCode, file_type: "json"})
+                        }}>
+                            JSON
+                            <DropdownMenuShortcut>
+                                <Download/>
+                            </DropdownMenuShortcut>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem onClick={(): void => {
+                            if (jsonCode) download_as({content: jsonCode, file_type: "txt"});
+                        }}>
+                            TXT
+                            <DropdownMenuShortcut>
+                                <Download/>
+                            </DropdownMenuShortcut>
+                        </DropdownMenuItem>
+
+                    </DropdownMenuContent>
+                </DropdownMenu>
 
 
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <X aria-label="remove all code button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
                         setJsonCode('');
                         setCode('');
+
+                        window.localStorage.setItem("code", "");
                     }}/>
                 </CustomToolTip>
 
