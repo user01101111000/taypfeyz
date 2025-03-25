@@ -18,13 +18,12 @@ import {
     DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu"
 import {toast} from "sonner";
+import {useCode} from "@/context/CodeContext.tsx";
 
-type TypeScriptEditorProps = {
-    code: string,
-};
 
-const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEditorProps): React.JSX.Element => {
+const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
+    const {code} = useCode();
     const [interfaceCode, setInterfaceCode] = React.useState('');
     const {parameters} = useSettings();
 

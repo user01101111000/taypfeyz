@@ -1,7 +1,12 @@
 import React from "react";
-import {SettingsParametersProps, SettingsContextProps, SettingsContextProviderProps} from "@/types/context_types.ts";
+import {
+    SettingsParametersProps,
+    SettingsContextProps,
+    SettingsContextProviderProps
+} from "@/types/settings_context_types.ts";
 import {toast} from "sonner";
 import settings_initial_data from "@/constants/settings_data.ts";
+import {useCode} from "@/context/CodeContext.tsx";
 
 const SettingsContext: React.Context<SettingsContextProps> = React.createContext<SettingsContextProps>({} as SettingsContextProps);
 
@@ -20,6 +25,10 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const [folding, setFolding] = React.useState<boolean>(settings.folding);
     const [showErrors, setShowErrors] = React.useState<boolean>(settings.showErrors);
     const [mouseWheelZoom, setMouseWheelZoom] = React.useState<boolean>(settings.mouseWheelZoom);
+    const [autoSave, setAutoSave] = React.useState<boolean>(settings.autoSave);
+
+
+    const {code} = useCode();
 
     const reset: VoidFunction = (): void => {
         setFontSize(settings_initial_data.fontSize);
@@ -32,12 +41,16 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setFolding(settings_initial_data.folding);
         setShowErrors(settings_initial_data.showErrors);
         setMouseWheelZoom(settings_initial_data.mouseWheelZoom);
+        setAutoSave(settings_initial_data.autoSave);
 
-        localStorage.setItem("settings", JSON.stringify(settings_initial_data));
+        window.localStorage.setItem("settings", JSON.stringify(settings_initial_data));
+        window.localStorage.setItem("code", code);
 
         toast.success("Settings reset.", {
             duration: 1000
         });
+
+
     }
 
     const save: (data: SettingsParametersProps) => void = (data: SettingsParametersProps): void => {
@@ -51,12 +64,17 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setFolding(data.folding);
         setShowErrors(data.showErrors);
         setMouseWheelZoom(data.mouseWheelZoom);
+        setAutoSave(data.autoSave);
 
         localStorage.setItem("settings", JSON.stringify(data));
+
+        if (!data.autoSave) window.localStorage.removeItem("code");
+        else window.localStorage.setItem("code", code);
 
         toast.success("Settings saved.", {
             duration: 1000
         });
+
     }
 
     const data: SettingsContextProps = {
@@ -71,6 +89,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
             folding,
             showErrors,
             mouseWheelZoom,
+            autoSave
         },
         save,
         reset

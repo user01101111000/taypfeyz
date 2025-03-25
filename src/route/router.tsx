@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.tsx";
 import React from "react";
 
 const Home: React.LazyExoticComponent<() => React.JSX.Element> = React.lazy((): Promise<typeof import("../pages/Home.tsx")> => import("../pages/Home.tsx"));
+const About: React.LazyExoticComponent<() => React.JSX.Element> = React.lazy((): Promise<typeof import("../pages/About.tsx")> => import("../pages/About.tsx"));
+const NotFound: React.LazyExoticComponent<() => React.JSX.Element> = React.lazy((): Promise<typeof import("../pages/NotFound.tsx")> => import("../pages/NotFound.tsx"));
 
 const routes: RouteObject[] = [
     {
@@ -12,6 +14,14 @@ const routes: RouteObject[] = [
             {
                 index: true,
                 element: <Home/>
+            },
+            {
+                path: "about",
+                element: <About/>
+            },
+            {
+                path: "*",
+                element: <NotFound/>
             }
         ]
     }

@@ -1,17 +1,23 @@
 import React from "react";
-import {NavLink} from "react-router";
+import {NavigateFunction, NavLink, useNavigate} from "react-router";
 import SettingsMenu from "@/components/layout/Header/SettingsMenu.tsx";
-import {Github} from "lucide-react";
+import {Github, Info} from "lucide-react";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
+import ShinyText from "@/components/ui/ShinyText.tsx";
 
 const Header: () => React.JSX.Element = (): React.JSX.Element => {
+
+    const navigator: NavigateFunction = useNavigate();
+
     return <header className="w-full border-b-[1px] border-border-header">
 
         <div className="flex items-center justify-between container mx-auto p-4">
 
-            <NavLink className="font-extrabold cursor-pointer" to="/">taypfeyz</NavLink>
+            <NavLink to="/"><ShinyText text="taypfeyz" className="font-extrabold cursor-pointer"/></NavLink>
 
             <div className="flex items-center justify-center gap-3">
+
+                <SettingsMenu/>
 
                 <CustomToolTip key="github" tooltip="Source code">
                     <a key="github" href="https://github.com/user01101111000/taypfeyz" title="Source code"
@@ -20,7 +26,13 @@ const Header: () => React.JSX.Element = (): React.JSX.Element => {
                     </a>
                 </CustomToolTip>
 
-                <SettingsMenu/>
+
+                <CustomToolTip key="about project" tooltip="About project">
+                    <Info className="h-5 w-5 cursor-pointer" onClick={(): void => {
+                        navigator("/about");
+                    }}/>
+                </CustomToolTip>
+
             </div>
 
         </div>

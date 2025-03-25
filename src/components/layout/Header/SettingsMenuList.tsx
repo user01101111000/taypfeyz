@@ -3,12 +3,11 @@ import {Input} from "@/components/ui/input.tsx";
 import {Checkbox} from "@/components/ui/checkbox.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {SettingsParametersProps} from "@/types/context_types.ts";
+import {SettingsParametersProps} from "@/types/settings_context_types.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import schema from "@/utils/schema.ts";
 import FontSizeInputComponent from "@/components/layout/Header/FontSizeInputComponent.tsx";
-import ShinyText from "@/components/ui/ShinyText.tsx";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -30,7 +29,8 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             rootName: parameters.rootName,
             prefix: parameters.prefix,
             namespace: parameters.namespace,
-            flow: parameters.flow
+            flow: parameters.flow,
+            autoSave: parameters.autoSave
         }
     });
 
@@ -57,7 +57,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-between">
 
-            <p>Root Name</p>
+            <p>Root name</p>
             <Input key="rootName" type="text" {...register("rootName")}
                    className="w-25 text-center"/>
         </div>
@@ -137,7 +137,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-between">
 
-            <p>Show Errors</p>
+            <p>Show errors</p>
             <Checkbox key="showErrors" checked={watch("showErrors")} onCheckedChange={(checked) => {
                 setValue("showErrors", checked as boolean);
             }} {...register("showErrors")} className="cursor-pointer"/>
@@ -150,7 +150,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-between">
 
-            <p>Mouse Wheel Zoom</p>
+            <p>Mouse wheel zoom</p>
             <Checkbox key="mouseWheelZoom" checked={watch("mouseWheelZoom")} onCheckedChange={(checked) => {
                 setValue("mouseWheelZoom", checked as boolean);
             }} {...register("mouseWheelZoom")} className="cursor-pointer"/>
@@ -163,8 +163,10 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-between">
 
-            <p>Auto Save</p>
-            <ShinyText text="Enabled" speed={4}/>
+            <p>Auto save</p>
+            <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked) => {
+                setValue("autoSave", checked as boolean);
+            }} {...register("autoSave")} className="cursor-pointer"/>
 
         </div>
 

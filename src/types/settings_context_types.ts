@@ -16,7 +16,8 @@ export type SettingsParametersProps = {
     folding: boolean,
     suggestions: boolean,
     showErrors: boolean,
-    mouseWheelZoom: boolean
+    mouseWheelZoom: boolean,
+    autoSave: boolean
 }
 
 

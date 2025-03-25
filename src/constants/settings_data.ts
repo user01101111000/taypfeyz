@@ -1,4 +1,4 @@
-import {SettingsParametersProps} from "@/types/context_types.ts";
+import {SettingsParametersProps} from "@/types/settings_context_types.ts";
 
 const settings_initial_data: SettingsParametersProps = {
     fontSize: 16,
@@ -10,7 +10,8 @@ const settings_initial_data: SettingsParametersProps = {
     suggestions: true,
     folding: true,
     showErrors: true,
-    mouseWheelZoom: false
+    mouseWheelZoom: false,
+    autoSave: true
 };
 
 export default settings_initial_data;

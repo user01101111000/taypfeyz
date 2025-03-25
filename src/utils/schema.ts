@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {SettingsParametersProps} from "@/types/context_types.ts";
+import {SettingsParametersProps} from "@/types/settings_context_types.ts";
 
 const schema: z.ZodType<SettingsParametersProps> = z.object({
     fontSize: z.number().min(10).max(30),
@@ -12,6 +12,7 @@ const schema: z.ZodType<SettingsParametersProps> = z.object({
     suggestions: z.boolean(),
     showErrors: z.boolean(),
     mouseWheelZoom: z.boolean(),
+    autoSave: z.boolean()
 });
 
 export default schema;

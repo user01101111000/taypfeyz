@@ -17,14 +17,12 @@ import {
     DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu"
 import {toast} from "sonner";
+import {useCode} from "@/context/CodeContext.tsx";
 
 
-type JSONEditorProps = {
-    setCode: React.Dispatch<React.SetStateAction<string>>
-};
+const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
-const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): React.JSX.Element => {
-
+    const {setCode} = useCode();
     const {parameters} = useSettings();
     const [jsonCode, setJsonCode] = React.useState<string>('');
 
@@ -32,8 +30,11 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
         setCode(value || '');
         setJsonCode(value || '');
 
-        localStorage.setItem("code", value || '');
+        if (parameters.autoSave) {
+            localStorage.setItem("code", value || '');
+        }
     }
+
 
     return <div
         className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl full_editor">
@@ -97,7 +98,7 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
                         setJsonCode('');
                         setCode('');
 
-                        window.localStorage.setItem("code", "");
+                        window.localStorage.removeItem("code");
                     }}/>
                 </CustomToolTip>
 
@@ -122,12 +123,14 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
             }}
             loading={<Loader color="oklch(0.705 0.213 47.604)"/>}
             onMount={(): void => {
-                const code: string | null = window.localStorage.getItem("code");
-                if (code) {
-                    setJsonCode(code);
-                    setCode(code);
-                }
+                if (parameters.autoSave) {
+                    const code: string | null = window.localStorage.getItem("code");
 
+                    if (code) {
+                        setJsonCode(code);
+                        setCode(code);
+                    }
+                }
             }}
         />
     </div>
