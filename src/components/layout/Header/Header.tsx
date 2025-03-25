@@ -28,7 +28,7 @@ const Header: () => React.JSX.Element = (): React.JSX.Element => {
 
 
                 <CustomToolTip key="about project" tooltip="About project">
-                    <Info className="h-5 w-5 cursor-pointer" onClick={(): void => {
+                    <Info aria-label="about page" className="h-5 w-5 cursor-pointer" onClick={(): void => {
                         navigator("/about");
                     }}/>
                 </CustomToolTip>

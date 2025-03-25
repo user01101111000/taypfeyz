@@ -8,6 +8,9 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import schema from "@/utils/schema.ts";
 import FontSizeInputComponent from "@/components/layout/Header/FontSizeInputComponent.tsx";
+import {Info} from "lucide-react";
+import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
+import settings_menu_list from "@/constants/settings_menu_list.ts";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -66,7 +69,16 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-between">
 
-            <p>Prefix</p>
+            <div className="flex items-center justify-center gap-2">
+                <p>Prefix</p>
+
+                <CustomToolTip key="namespace tooltip"
+                               tooltip={settings_menu_list.info.prefix} w50>
+                    <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
+                </CustomToolTip>
+
+            </div>
+
             <Input key="prefix" type="text" {...register("prefix")}
                    className="w-25 text-center"/>
         </div>
@@ -76,7 +88,15 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-between">
 
-            <p>Namespace</p>
+            <div className="flex items-center justify-center gap-2">
+                <p>Namespace</p>
+
+                <CustomToolTip key="namespace tooltip"
+                               tooltip={settings_menu_list.info.namespace} w50>
+                    <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
+                </CustomToolTip>
+
+            </div>
             <Input key="namespace" type="text" {...register("namespace")}
                    className="w-25 text-center"/>
         </div>
@@ -162,8 +182,16 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         {/*------------------------- Auto Save -------------------------*/}
 
         <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center gap-2">
+                <p>Auto save</p>
 
-            <p>Auto save</p>
+                <CustomToolTip key="namespace tooltip"
+                               tooltip={settings_menu_list.info.autoSave} w50>
+                    <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
+                </CustomToolTip>
+
+            </div>
+
             <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked) => {
                 setValue("autoSave", checked as boolean);
             }} {...register("autoSave")} className="cursor-pointer"/>
