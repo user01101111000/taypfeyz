@@ -16,6 +16,7 @@ import {
     DropdownMenuTrigger,
     DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu"
+import {toast} from "sonner";
 
 
 type JSONEditorProps = {
@@ -61,6 +62,11 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (jsonCode) download_as({content: jsonCode, file_type: "json"})
+                            else {
+                                toast.info("No code to download.", {
+                                    duration: 1500
+                                });
+                            }
                         }}>
                             JSON
                             <DropdownMenuShortcut>
@@ -70,6 +76,11 @@ const JSONEditor: React.FC<JSONEditorProps> = ({setCode}: JSONEditorProps): Reac
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (jsonCode) download_as({content: jsonCode, file_type: "txt"});
+                            else {
+                                toast.info("No code to download.", {
+                                    duration: 1500
+                                });
+                            }
                         }}>
                             TXT
                             <DropdownMenuShortcut>

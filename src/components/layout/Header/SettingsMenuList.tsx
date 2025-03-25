@@ -7,6 +7,8 @@ import {SettingsParametersProps} from "@/types/context_types.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useSettings} from "@/context/SettingsContext.tsx";
 import schema from "@/utils/schema.ts";
+import FontSizeInputComponent from "@/components/layout/Header/FontSizeInputComponent.tsx";
+import ShinyText from "@/components/ui/ShinyText.tsx";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -39,7 +41,6 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         setOpen(false);
     }
 
-
     return <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 select-none">
 
 
@@ -48,9 +49,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         <div className="flex items-center justify-between">
 
             <p>Font size</p>
-            <Input key="fontSize" type="number" max={30}
-                   min={10} {...register("fontSize", {valueAsNumber: true})}
-                   className="w-18 text-center appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-noneappearance-none [&::-webkit-outer-spin-button]:appearance-none"/>
+            <FontSizeInputComponent register={register} setValue={setValue} watch={watch}/>
         </div>
 
 
@@ -165,8 +164,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         <div className="flex items-center justify-between">
 
             <p>Auto Save</p>
-            <p className="opacity-50">Enabled</p>
-
+            <ShinyText text="Enabled" speed={4}/>
 
         </div>
 

@@ -17,6 +17,7 @@ import {
     DropdownMenuTrigger,
     DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu"
+import {toast} from "sonner";
 
 type TypeScriptEditorProps = {
     code: string,
@@ -75,7 +76,12 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
                         <DropdownMenuSeparator/>
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"})
+                            if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"});
+                            else {
+                                toast.info("No code to download.", {
+                                    duration: 1500
+                                });
+                            }
                         }}>
                             TS
                             <DropdownMenuShortcut>
@@ -85,6 +91,11 @@ const TypeScriptEditor: React.FC<TypeScriptEditorProps> = ({code}: TypeScriptEdi
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
                             if (interfaceCode) download_as({content: interfaceCode, file_type: "txt"});
+                            else {
+                                toast.info("No code to download.", {
+                                    duration: 1500
+                                });
+                            }
                         }}>
                             TXT
                             <DropdownMenuShortcut>
