@@ -23,9 +23,9 @@ const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
         </DialogTrigger>
         <DialogContent>
             <DialogHeader>
-                <DialogTitle>Upload your JSON content</DialogTitle>
+                <DialogTitle>📂 Upload your JSON content</DialogTitle>
                 <DialogDescription asChild>
-                    <div className="flex flex-col gap-4 my-4">
+                    <div className="flex flex-col gap-10 my-4">
 
                         <UploadContentURL setOpen={setOpen}/>
 
@@ -36,7 +36,7 @@ const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
                         </div>
 
 
-                        <UploadContentFile/>
+                        <UploadContentFile setOpen={setOpen}/>
 
                     </div>
                 </DialogDescription>

@@ -55,7 +55,7 @@ const UploadContentURL: React.FC<UploadContentURLProps> = ({setOpen}: UploadCont
                placeholder="https://jsonplaceholder.typicode.com/users" {...register("url")} />
         {errors.url && <p className="text-red-500">{errors.url.message}</p>}
 
-        <Button disabled={loading}>
+        <Button disabled={loading} className="cursor-pointer">
             {loading ? "Loading..." : "Submit"}
         </Button>
     </form>
