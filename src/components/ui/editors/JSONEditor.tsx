@@ -18,23 +18,21 @@ import {
 } from "@/components/ui/dropdown-menu"
 import {toast} from "sonner";
 import {useCode} from "@/context/CodeContext.tsx";
+import UploadComponent from "@/components/ui/editors/upload_option/UploadComponent.tsx";
 
 
 const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
-    const {setCode} = useCode();
+    const {setCode, code} = useCode();
     const {parameters} = useSettings();
-    const [jsonCode, setJsonCode] = React.useState<string>('');
 
     const handleChange: (value: string | undefined) => void = (value: string | undefined): void => {
         setCode(value || '');
-        setJsonCode(value || '');
 
         if (parameters.autoSave) {
-            localStorage.setItem("code", value || '');
+            window.localStorage.setItem("code", value || '');
         }
-    }
-
+    };
 
     return <div
         className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl full_editor">
@@ -45,10 +43,11 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
             <div className="flex items-center justify-center gap-3">
 
+                <UploadComponent/>
 
                 <CustomToolTip key="copy" tooltip="Copy">
                     <Copy aria-label="copy button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
-                        if (jsonCode) copy_fn({text: jsonCode, message: "Copied."});
+                        if (code) copy_fn({text: code, message: "Copied."});
                     }}/>
                 </CustomToolTip>
 
@@ -62,7 +61,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         <DropdownMenuSeparator/>
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (jsonCode) download_as({content: jsonCode, file_type: "json"})
+                            if (code) download_as({content: code, file_type: "json"})
                             else {
                                 toast.info("No code to download.", {
                                     duration: 1500
@@ -76,7 +75,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         </DropdownMenuItem>
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (jsonCode) download_as({content: jsonCode, file_type: "txt"});
+                            if (code) download_as({content: code, file_type: "txt"});
                             else {
                                 toast.info("No code to download.", {
                                     duration: 1500
@@ -95,9 +94,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <X aria-label="remove all code button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
-                        setJsonCode('');
                         setCode('');
-
                         window.localStorage.removeItem("code");
                     }}/>
                 </CustomToolTip>
@@ -110,7 +107,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
             language="json"
             theme="vs-dark"
             onChange={handleChange}
-            value={jsonCode}
+            value={code}
             options={{
                 fontSize: parameters.fontSize,
                 minimap: {
@@ -124,11 +121,10 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
             loading={<Loader color="oklch(0.705 0.213 47.604)"/>}
             onMount={(): void => {
                 if (parameters.autoSave) {
-                    const code: string | null = window.localStorage.getItem("code");
+                    const last_code: string | null = window.localStorage.getItem("code");
 
-                    if (code) {
-                        setJsonCode(code);
-                        setCode(code);
+                    if (last_code) {
+                        setCode(last_code);
                     }
                 }
             }}
