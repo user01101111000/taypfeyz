@@ -4,25 +4,16 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {Button} from "@/components/ui/button.tsx";
 import {useCode} from "@/context/CodeContext.tsx";
 import React from "react";
-import {z} from "zod";
-
-type UploadInputs = {
-    JSONFile: FileList
-};
-
-type UploadContentFileProps = {
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-};
-
-// const schema = z.object({
-//     JSONFile: z.instanceof(FileList),
-// })
+import {zodResolver} from "@hookform/resolvers/zod";
+import {UploadContentFileProps, UploadInputs} from "@/types/upload_content_file_types.ts";
+import jsonFile_schema from "@/utils/schemas/file_schema.ts";
 
 const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadContentFileProps): React.JSX.Element => {
 
-
     const {setCode} = useCode();
-    const {register, watch, handleSubmit, formState: {errors}} = useForm<UploadInputs>();
+    const {register, watch, handleSubmit, formState: {errors}} = useForm<UploadInputs>({
+        resolver: zodResolver(jsonFile_schema)
+    });
     const myJSONFile: FileList = watch("JSONFile");
 
 
@@ -47,19 +38,16 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
         reader.readAsText(jsonFile);
     }
 
-
     return <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
         <Label htmlFor="JSONFile"
-               className="w-full h-50 border-2 border-dashed border-gray-600 rounded-2xl flex items-center justify-center cursor-pointer">
-            <p className="text-[.9rem] text-text-color-2">{myJSONFile?.[0] ? myJSONFile?.[0]?.name : "🚀 Upload your JSON file."}</p>
+               className="w-full h-50 border-2 border-dashed border-gray-600 rounded-2xl flex items-center justify-center cursor-pointer p-4">
+            <p className="text-[.9rem] text-text-color-2 text-center line-clamp-2">{myJSONFile?.[0] ? myJSONFile?.[0]?.name : "🚀 Upload your JSON file."}</p>
         </Label>
 
-
         <Input type="file" style={{display: "none"}} {...register("JSONFile")} id="JSONFile"/>
-
-
-        <Button className="cursor-pointer" type="submit">Submit</Button>
+        {errors.JSONFile && <p className="text-red-500 text-sm">{errors.JSONFile.message}</p>}{}
+        <Button className="cursor-pointer" type="submit">Read</Button>
 
     </form>
 };

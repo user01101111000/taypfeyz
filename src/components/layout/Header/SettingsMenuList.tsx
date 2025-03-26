@@ -6,7 +6,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {SettingsParametersProps} from "@/types/settings_context_types.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useSettings} from "@/context/SettingsContext.tsx";
-import schema from "@/utils/schema.ts";
+import settings_schema from "@/utils/schemas/settings_schema.ts";
 import FontSizeInputComponent from "@/components/layout/Header/FontSizeInputComponent.tsx";
 import {Info} from "lucide-react";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
@@ -21,7 +21,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
     const {parameters, save, reset} = useSettings();
 
     const {register, handleSubmit, watch, setValue} = useForm<SettingsParametersProps>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(settings_schema),
         defaultValues: {
             fontSize: parameters.fontSize,
             mapVisible: parameters.mapVisible,

@@ -1,7 +1,7 @@
 import {z} from "zod";
 import {SettingsParametersProps} from "@/types/settings_context_types.ts";
 
-const schema: z.ZodType<SettingsParametersProps> = z.object({
+const settings_schema: z.ZodType<SettingsParametersProps> = z.object({
     fontSize: z.number().min(10).max(30),
     rootName: z.string(),
     prefix: z.string(),
@@ -15,4 +15,4 @@ const schema: z.ZodType<SettingsParametersProps> = z.object({
     autoSave: z.boolean()
 });
 
-export default schema;
+export default settings_schema;
