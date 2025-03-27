@@ -127,7 +127,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                     if (last_code) {
                         setCode(last_code);
                     }
-                }
+                };
             }}
         />
     </div>
