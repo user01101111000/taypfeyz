@@ -1,7 +1,6 @@
 import React from "react";
 import {CodeContextProps, CodeContextProviderProps} from "@/types/code_context_types.ts";
 
-
 const CodeContext: React.Context<CodeContextProps> = React.createContext<CodeContextProps>({} as CodeContextProps);
 
 const CodeProvider : React.FC<CodeContextProviderProps> = ({children} : CodeContextProviderProps): React.JSX.Element  =>{
@@ -23,6 +22,5 @@ const useCode: () => CodeContextProps = (): CodeContextProps => {
 
     return context;
 };
-
 
 export {CodeProvider, useCode};

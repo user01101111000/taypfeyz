@@ -1,6 +1,6 @@
 import React from "react";
 import {NavigateFunction, useNavigate} from "react-router";
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/components/ui/shadcn/button.tsx";
 
 const NotFoundContainer: () => React.JSX.Element = (): React.JSX.Element => {
 

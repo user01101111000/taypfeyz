@@ -16,7 +16,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
     DropdownMenuShortcut,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/shadcn/dropdown-menu.tsx"
 import {toast} from "sonner";
 import {useCode} from "@/context/CodeContext.tsx";
 

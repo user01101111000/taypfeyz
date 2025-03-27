@@ -3,7 +3,7 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover.tsx"
+} from "@/components/ui/shadcn/popover.tsx"
 import {Settings} from "lucide-react";
 import SettingsMenuList from "@/components/layout/Header/SettingsMenuList.tsx";
 

@@ -5,7 +5,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog.tsx"
+} from "@/components/ui/shadcn/dialog.tsx"
 import {Upload} from "lucide-react";
 import React from "react";
 import UploadContentURL from "@/components/ui/editors/upload_option/UploadContentURL.tsx";

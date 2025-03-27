@@ -1,7 +1,7 @@
 import React from "react";
-import {Input} from "@/components/ui/input.tsx";
-import {Checkbox} from "@/components/ui/checkbox.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import {Input} from "@/components/ui/shadcn/input.tsx";
+import {Checkbox} from "@/components/ui/shadcn/checkbox.tsx";
+import {Button} from "@/components/ui/shadcn/button.tsx";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {SettingsParametersProps} from "@/types/settings_context_types.ts";
 import {zodResolver} from "@hookform/resolvers/zod";

@@ -1,6 +1,6 @@
-import {Input} from "@/components/ui/input.tsx";
+import {Input} from "@/components/ui/shadcn/input.tsx";
 import React from "react";
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/components/ui/shadcn/button.tsx";
 
 type FontSizeInputComponentProps = {
     register: any,

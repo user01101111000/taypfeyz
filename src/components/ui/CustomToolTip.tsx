@@ -3,7 +3,7 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/shadcn/tooltip.tsx"
 import React from "react";
 
 

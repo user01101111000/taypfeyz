@@ -1,6 +1,6 @@
-import {Input} from "@/components/ui/input.tsx";
+import {Input} from "@/components/ui/shadcn/input.tsx";
 import React from "react";
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/components/ui/shadcn/button.tsx";
 import {useCode} from "@/context/CodeContext.tsx";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";

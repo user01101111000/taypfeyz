@@ -1,6 +1,6 @@
 import React from "react";
 import ShinyText from "@/components/ui/ShinyText.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import {Button} from "@/components/ui/shadcn/button.tsx";
 import {NavigateFunction, useNavigate} from "react-router";
 import about_data from "@/constants/about_data.ts";
 
