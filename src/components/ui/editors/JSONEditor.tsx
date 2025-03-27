@@ -1,7 +1,7 @@
 import React from "react";
 import Editor from '@monaco-editor/react';
 import {useSettings} from "@/context/SettingsContext.tsx";
-import {Copy, Download, X} from "lucide-react";
+import {Copy, Download, Trash2} from "lucide-react";
 import copy_fn from "@/utils/copy_fn.ts";
 import download_as from "@/utils/download_as.ts";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
@@ -35,18 +35,18 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
     };
 
     return <div
-        className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl full_editor">
+        className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 border-r-2 border-r-[rgba(255,255,255,0.05)]">
         <div
-            className="py-3 pl-10 pr-7 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-orange-700 lg:py-4">
+            className="py-3 pl-10 pr-7 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E]">
 
             <p className="font-extrabold text-[.8rem] lg:text-[1rem]">JSON Editor</p>
 
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-3.5">
 
                 <UploadComponent/>
 
                 <CustomToolTip key="copy" tooltip="Copy">
-                    <Copy aria-label="copy button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                    <Copy aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" onClick={(): void => {
                         if (code) copy_fn({text: code, message: "Copied."});
                     }}/>
                 </CustomToolTip>
@@ -54,7 +54,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
                 <DropdownMenu>
                     <DropdownMenuTrigger>
-                        <Download aria-label="download button" className="h-4 w-4 cursor-pointer"/>
+                        <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer"/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>Download as</DropdownMenuLabel>
@@ -93,10 +93,11 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
 
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
-                    <X aria-label="remove all code button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
-                        setCode('');
-                        window.localStorage.removeItem("code");
-                    }}/>
+                    <Trash2 aria-label="remove all code button" className="h-3.5 w-3.5 cursor-pointer"
+                            onClick={(): void => {
+                                setCode('');
+                                window.localStorage.removeItem("code");
+                            }}/>
                 </CustomToolTip>
 
             </div>
@@ -118,7 +119,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 renderValidationDecorations: parameters.showErrors ? "on" : "off",
                 mouseWheelZoom: parameters.mouseWheelZoom,
             }}
-            loading={<Loader color="oklch(0.705 0.213 47.604)"/>}
+            loading={<Loader color="white"/>}
             onMount={(): void => {
                 if (parameters.autoSave) {
                     const last_code: string | null = window.localStorage.getItem("code");

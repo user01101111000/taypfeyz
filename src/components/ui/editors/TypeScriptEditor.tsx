@@ -51,24 +51,24 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
     }, [code, parameters.rootName, parameters.prefix, parameters.namespace, parameters.flow])
 
-    return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3 rounded-3xl">
+    return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3">
 
         <div
-            className="py-3 pl-10 pr-7 border-b-[1px] border-border-header flex items-center justify-between gap-2 bg-blue-900 lg:py-4">
+            className="py-3 pl-10 pr-7 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E]">
 
             <p className="font-extrabold text-[.8rem] lg:text-[1rem] text-nowrap">TypeScript Editor</p>
 
             <div className="flex items-center justify-center gap-3">
 
                 <CustomToolTip key="copy" tooltip="Copy">
-                    <Copy aria-label="copy button" className="h-4 w-4 cursor-pointer" onClick={(): void => {
+                    <Copy aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" onClick={(): void => {
                         if (interfaceCode) copy_fn({text: interfaceCode, message: "Copied."});
                     }}/>
                 </CustomToolTip>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger>
-                        <Download aria-label="download button" className="h-4 w-4 cursor-pointer"/>
+                        <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer"/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>Download as</DropdownMenuLabel>
@@ -125,7 +125,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 renderValidationDecorations: parameters.showErrors ? "on" : "off",
                 mouseWheelZoom: parameters.mouseWheelZoom,
             }}
-            loading={<Loader color="oklch(0.379 0.146 265.522)"/>}
+            loading={<Loader color="white"/>}
             value={interfaceCode}
         />
     </div>

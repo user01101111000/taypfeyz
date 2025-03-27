@@ -19,7 +19,7 @@ const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
         setOpen((p: boolean): boolean => !p);
     }}>
         <DialogTrigger>
-            <Upload aria-label="copy button" className="h-4 w-4 cursor-pointer"/>
+            <Upload aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer"/>
         </DialogTrigger>
         <DialogContent>
             <DialogHeader>

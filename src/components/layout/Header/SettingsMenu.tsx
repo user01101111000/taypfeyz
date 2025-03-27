@@ -23,7 +23,7 @@ const SettingsMenu: () => React.JSX.Element = (): React.JSX.Element => {
         setOpen((p: boolean): boolean => !p)
     }}>
         <PopoverTrigger>
-            <Settings aria-label="setting button" className="h-5 w-5 cursor-pointer"/>
+            <Settings aria-label="setting button" className="h-4.5 w-4.5 cursor-pointer"/>
         </PopoverTrigger>
         <PopoverContent>
             <SettingsMenuList setOpen={setOpen}/>
