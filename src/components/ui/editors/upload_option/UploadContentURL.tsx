@@ -44,7 +44,7 @@ const UploadContentURL: React.FC<UploadContentURLProps> = ({setOpen}: UploadCont
         {errors.url && <p className="text-red-500 text-sm">{errors.url.message}</p>}
 
         <Button disabled={loading} className="cursor-pointer">
-            {loading ? "Loading..." : "Fetch"}
+            {loading ? "Fetching..." : "Fetch"}
         </Button>
     </form>
 };

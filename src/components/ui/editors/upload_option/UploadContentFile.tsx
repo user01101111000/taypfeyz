@@ -90,7 +90,7 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
 
             <div className="text-[.9rem] text-text-color-2 text-center line-clamp-2 pointer-events-none">{dragActive ?
                 <p>📂 Drop the file here...</p> : myJSONFile?.[0] ? `📄 ${myJSONFile?.[0]?.name}` :
-                    <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="flex flex-col items-center justify-center gap-2.5">
                         <UploadIcon/>
                         <p>Drag and drop or click to upload your JSON file.</p>
                     </div>}</div>

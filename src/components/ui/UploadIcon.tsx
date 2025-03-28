@@ -1,7 +1,7 @@
 import React from "react";
 
 const UploadIcon: () => React.JSX.Element = (): React.JSX.Element => {
-    return <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    return <svg width="45" height="45" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="m0 0h24v24h-24z" fill="#fff" opacity="0"/>
         <g fill="rgba(255,255,255,.5)">
             <path
