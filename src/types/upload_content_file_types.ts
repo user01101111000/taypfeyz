@@ -1,7 +1,7 @@
 import React from "react";
 
 export type UploadInputs = {
-    JSONFile: FileList
+    JSONFile: FileList | null
 };
 
 export type UploadContentFileProps = {

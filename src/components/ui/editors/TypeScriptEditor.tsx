@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/shadcn/dropdown-menu.tsx"
 import {toast} from "sonner";
 import {useCode} from "@/context/CodeContext.tsx";
+import ShinyText from "@/components/ui/ShinyText.tsx";
 
 
 const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
@@ -37,7 +38,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                     prefix: parameters.prefix,
                     namespace: parameters.namespace,
                     flow: parameters.flow
-                });
+                }).trim();
 
                 setInterfaceCode(interface_code);
 
@@ -45,7 +46,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
 
         } catch (e) {
-            setInterfaceCode("// This format not supported")
+            setInterfaceCode("// This format not supported.")
         }
 
 
@@ -56,7 +57,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
         <div
             className="py-3 pl-10 pr-7 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E]">
 
-            <p className="font-extrabold text-[.8rem] lg:text-[1rem] text-nowrap">TypeScript Editor</p>
+            <ShinyText text="TypeScript Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]" />
 
             <div className="flex items-center justify-center gap-3">
 
