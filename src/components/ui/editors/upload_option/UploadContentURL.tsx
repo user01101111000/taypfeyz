@@ -37,8 +37,8 @@ const UploadContentURL: React.FC<UploadContentURLProps> = ({setOpen}: UploadCont
         })
     }
 
-    return <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
-        <p className="text-white font-bold">URL</p>
+    return <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <p className="text-white font-bold">🔗 URL</p>
         <Input className="text-white" type="text"
                placeholder="https://jsonplaceholder.typicode.com/users" {...register("url")} />
         {errors.url && <p className="text-red-500 text-sm">{errors.url.message}</p>}

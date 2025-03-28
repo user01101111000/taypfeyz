@@ -16,7 +16,7 @@ const Header: () => React.JSX.Element = (): React.JSX.Element => {
 
                 <SettingsMenu/>
 
-                <CustomToolTip key="github" tooltip="Source code">
+                <CustomToolTip key="github" tooltip="Github">
                     <a key="github" href="https://github.com/user01101111000/taypfeyz" title="Source code"
                        target="_blank">
                         <Github className="h-4 w-4 cursor-pointer"/>

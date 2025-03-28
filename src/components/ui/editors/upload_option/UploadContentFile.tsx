@@ -9,6 +9,8 @@ import {UploadContentFileProps, UploadInputs} from "@/types/upload_content_file_
 import jsonFile_schema from "@/utils/schemas/file_schema.ts";
 import UploadIcon from "@/components/ui/UploadIcon.tsx";
 import {Trash2} from "lucide-react";
+import {Badge} from "@/components/ui/shadcn/badge"
+
 
 const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadContentFileProps): React.JSX.Element => {
 
@@ -72,7 +74,16 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
         reader.readAsText(jsonFile);
     };
 
-    return <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+    return <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+
+        <div className="flex items-center justify-between gap-2">
+            <p className="text-white font-bold">📄 File</p>
+
+            <div className="flex gap-2">
+                <Badge className="bg-white text-black" variant="outline">JSON</Badge>
+                <Badge className="bg-white text-black" variant="outline">TXT</Badge>
+            </div>
+        </div>
 
         <Label htmlFor="JSONFile"
                className={`relative w-full h-50 border-2 border-dashed border-gray-600 rounded-2xl flex items-center justify-center p-4 ${!myJSONFile?.[0] && "cursor-pointer"} ${dragActive ? "bg-gray-700 border-gray-300" : ""}`}
@@ -92,7 +103,7 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
                 <p>📂 Drop the file here...</p> : myJSONFile?.[0] ? `📄 ${myJSONFile?.[0]?.name}` :
                     <div className="flex flex-col items-center justify-center gap-2.5">
                         <UploadIcon/>
-                        <p>Drag and drop or click to upload your JSON file.</p>
+                        <p>Drag and drop or click to upload your file.</p>
                     </div>}</div>
         </Label>
 

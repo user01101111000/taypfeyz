@@ -11,6 +11,7 @@ import FontSizeInputComponent from "@/components/layout/Header/FontSizeInputComp
 import {Info} from "lucide-react";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import settings_menu_list from "@/constants/settings_menu_list.ts";
+import ShinyText from "@/components/ui/ShinyText.tsx";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -44,7 +45,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         setOpen(false);
     }
 
-    return <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 select-none">
+    return <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 select-none ">
 
 
         {/*------------------------- Font size -------------------------*/}
@@ -219,6 +220,9 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                     }}>Reset</Button>
         </div>
+
+        <ShinyText className="text-[.7rem] text-center" text={"Made with ❤️ by"} link={"user01101111000"}
+                   href={"https://github.com/user01101111000"}/>
     </form>
 };
 

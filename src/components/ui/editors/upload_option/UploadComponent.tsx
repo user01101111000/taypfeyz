@@ -25,14 +25,14 @@ const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
             <DialogHeader>
                 <DialogTitle>📂 Upload your JSON content</DialogTitle>
                 <DialogDescription asChild>
-                    <div className="flex flex-col gap-10 my-4">
+                    <div className="flex flex-col gap-7 my-4">
 
                         <UploadContentURL setOpen={setOpen}/>
 
                         <div className="flex items-center justify-center gap-2">
-                            <hr className="border-gray-700 flex-1/2"/>
-                            <p className="font-bold text-white">or</p>
-                            <hr className="border-gray-700 flex-1/2"/>
+                            <hr className="border-[rgba(255,255,255,0.5)] flex-1/2"/>
+                            <p className="font-bold text-[rgba(255,255,255,0.5)]">or</p>
+                            <hr className="border-[rgba(255,255,255,0.5)] flex-1/2"/>
                         </div>
 
 

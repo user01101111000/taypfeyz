@@ -19,7 +19,7 @@ const SettingsMenu: () => React.JSX.Element = (): React.JSX.Element => {
         }
     }, [open]);
 
-    return <Popover open={open} onOpenChange={(): void => {
+    return <Popover  open={open} onOpenChange={(): void => {
         setOpen((p: boolean): boolean => !p)
     }}>
         <PopoverTrigger>

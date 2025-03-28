@@ -52,7 +52,6 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                     }}/>
                 </CustomToolTip>
 
-
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer"/>
@@ -91,7 +90,6 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
                     </DropdownMenuContent>
                 </DropdownMenu>
-
 
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <Trash2 aria-label="remove all code button" className="h-3.5 w-3.5 cursor-pointer"
