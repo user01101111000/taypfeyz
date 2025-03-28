@@ -12,8 +12,15 @@ const SettingsContext: React.Context<SettingsContextProps> = React.createContext
 
 const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: SettingsContextProviderProps): React.JSX.Element => {
 
-    const localData: string | null = localStorage.getItem("settings");
-    const settings: SettingsParametersProps = localData ? (JSON.parse(localData) as SettingsParametersProps) : settings_initial_data;
+    const localSettingsData: string | null = window.localStorage.getItem("settings");
+    const settings: SettingsParametersProps = localSettingsData ? (JSON.parse(localSettingsData) as SettingsParametersProps) : settings_initial_data;
+
+    const {code} = useCode();
+
+    if (!localSettingsData) {
+        window.localStorage.setItem("settings", JSON.stringify(settings));
+        window.localStorage.setItem("code", code);
+    }
 
     const [fontSize, setFontSize] = React.useState<number>(settings.fontSize);
     const [rootName, setRootName] = React.useState<string>(settings.rootName);
@@ -26,9 +33,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const [showErrors, setShowErrors] = React.useState<boolean>(settings.showErrors);
     const [mouseWheelZoom, setMouseWheelZoom] = React.useState<boolean>(settings.mouseWheelZoom);
     const [autoSave, setAutoSave] = React.useState<boolean>(settings.autoSave);
-
-
-    const {code} = useCode();
 
     const reset: VoidFunction = (): void => {
         setFontSize(settings_initial_data.fontSize);
@@ -49,8 +53,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         toast.success("Settings reset.", {
             duration: 1000
         });
-
-
     }
 
     const save: (data: SettingsParametersProps) => void = (data: SettingsParametersProps): void => {
@@ -66,7 +68,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setMouseWheelZoom(data.mouseWheelZoom);
         setAutoSave(data.autoSave);
 
-        localStorage.setItem("settings", JSON.stringify(data));
+        window.localStorage.setItem("settings", JSON.stringify(data));
 
         if (!data.autoSave) window.localStorage.removeItem("code");
         else window.localStorage.setItem("code", code);
@@ -74,7 +76,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         toast.success("Settings saved.", {
             duration: 1000
         });
-
     }
 
     const data: SettingsContextProps = {
