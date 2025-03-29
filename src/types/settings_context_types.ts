@@ -16,7 +16,9 @@ export type SettingsParametersProps = {
     folding: boolean,
     suggestions: boolean,
     showErrors: boolean,
-    mouseWheelZoom: boolean,
+    wordWrap: boolean,
+    lineHeight: number,
+    lineNumbers: boolean,
     autoSave: boolean
 }
 

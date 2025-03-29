@@ -18,7 +18,7 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
 
     const {setCode} = useCode();
 
-    const {register, watch, handleSubmit, formState: {errors}, setValue} = useForm<UploadInputs>({
+    const {register, watch, handleSubmit, formState: {errors}, setValue, setError} = useForm<UploadInputs>({
         resolver: zodResolver(jsonFile_schema)
     });
 
@@ -60,15 +60,12 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
 
         const reader = new FileReader();
         reader.onload = (e: ProgressEvent<FileReader>): void => {
-            try {
-                const json = e.target?.result as string;
-                setCode(json);
-                window.localStorage.setItem("code", json);
 
-                setOpen(false);
-            } catch (error) {
-                console.error("Geçersiz JSON dosyası", error);
-            }
+            const json = e.target?.result as string;
+            setCode(json);
+            window.localStorage.setItem("code", json);
+
+            setOpen(false);
         };
 
         reader.readAsText(jsonFile);
@@ -95,6 +92,7 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
                 <Trash2 className="h-4 w-4 absolute top-4 right-4 cursor-pointer" color="#EE4B2B"
                         onClick={(e: React.MouseEvent): void => {
                             setValue("JSONFile", null);
+                            setError("JSONFile", {message: ""});
                             e.stopPropagation();
                             e.preventDefault();
                         }}/>}
@@ -109,7 +107,9 @@ const UploadContentFile: React.FC<UploadContentFileProps> = ({setOpen}: UploadCo
 
         <Input type="file" style={{display: "none"}} {...register("JSONFile")} id="JSONFile"
                disabled={Boolean(myJSONFile?.[0])}/>
-        {errors.JSONFile && <p className="text-red-500 text-sm">{errors.JSONFile.message}</p>}{}
+
+        {errors.JSONFile?.message && <p className="text-red-500 text-sm">{errors.JSONFile.message}</p>}
+
         <Button className="cursor-pointer" type="submit">Read</Button>
 
     </form>

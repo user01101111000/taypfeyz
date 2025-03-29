@@ -10,7 +10,9 @@ const settings_initial_data: SettingsParametersProps = {
     suggestions: true,
     folding: true,
     showErrors: true,
-    mouseWheelZoom: false,
+    wordWrap: false,
+    lineNumbers: true,
+    lineHeight: 24,
     autoSave: true
 };
 

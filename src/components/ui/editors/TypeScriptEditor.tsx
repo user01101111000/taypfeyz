@@ -124,7 +124,10 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 quickSuggestions: parameters.suggestions,
                 folding: parameters.folding,
                 renderValidationDecorations: parameters.showErrors ? "on" : "off",
-                mouseWheelZoom: parameters.mouseWheelZoom,
+
+                wordWrap: parameters.wordWrap ? "on" : "off",
+                lineHeight: parameters.lineHeight,
+                lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
             loading={<Loader color="white"/>}
             value={interfaceCode}

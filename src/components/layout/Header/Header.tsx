@@ -10,9 +10,9 @@ const Header: () => React.JSX.Element = (): React.JSX.Element => {
 
         <div className="flex items-center justify-between pl-10 pr-6 py-3">
 
-            <NavLink to="/" className="font-bold">taypfeyz</NavLink>
+            <NavLink to="/" className="font-extrabold">taypfeyz</NavLink>
 
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-2.5">
 
                 <SettingsMenu/>
 

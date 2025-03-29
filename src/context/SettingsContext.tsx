@@ -31,7 +31,9 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const [suggestions, setSuggestions] = React.useState<boolean>(settings.suggestions);
     const [folding, setFolding] = React.useState<boolean>(settings.folding);
     const [showErrors, setShowErrors] = React.useState<boolean>(settings.showErrors);
-    const [mouseWheelZoom, setMouseWheelZoom] = React.useState<boolean>(settings.mouseWheelZoom);
+    const [wordWrap, setWordWrap] = React.useState<boolean>(settings.wordWrap);
+    const [lineHeight, setLineHeight] = React.useState<number>(settings.lineHeight);
+    const [lineNumbers, setLineNumbers] = React.useState<boolean>(settings.lineNumbers);
     const [autoSave, setAutoSave] = React.useState<boolean>(settings.autoSave);
 
     const reset: VoidFunction = (): void => {
@@ -44,7 +46,9 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setSuggestions(settings_initial_data.suggestions);
         setFolding(settings_initial_data.folding);
         setShowErrors(settings_initial_data.showErrors);
-        setMouseWheelZoom(settings_initial_data.mouseWheelZoom);
+        setWordWrap(settings_initial_data.wordWrap);
+        setLineHeight(settings_initial_data.lineHeight);
+        setLineNumbers(settings_initial_data.lineNumbers);
         setAutoSave(settings_initial_data.autoSave);
 
         window.localStorage.setItem("settings", JSON.stringify(settings_initial_data));
@@ -65,7 +69,9 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setSuggestions(data.suggestions);
         setFolding(data.folding);
         setShowErrors(data.showErrors);
-        setMouseWheelZoom(data.mouseWheelZoom);
+        setWordWrap(data.wordWrap);
+        setLineHeight(data.lineHeight);
+        setLineNumbers(data.lineNumbers);
         setAutoSave(data.autoSave);
 
         window.localStorage.setItem("settings", JSON.stringify(data));
@@ -89,7 +95,9 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
             suggestions,
             folding,
             showErrors,
-            mouseWheelZoom,
+            wordWrap,
+            lineHeight,
+            lineNumbers,
             autoSave
         },
         save,

@@ -11,7 +11,9 @@ const settings_schema: z.ZodType<SettingsParametersProps> = z.object({
     folding: z.boolean(),
     suggestions: z.boolean(),
     showErrors: z.boolean(),
-    mouseWheelZoom: z.boolean(),
+    wordWrap: z.boolean(),
+    lineNumbers: z.boolean(),
+    lineHeight: z.number().min(20).max(30),
     autoSave: z.boolean()
 });
 

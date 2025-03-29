@@ -12,6 +12,7 @@ import {Info} from "lucide-react";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import settings_menu_list from "@/constants/settings_menu_list.ts";
 import ShinyText from "@/components/ui/ShinyText.tsx";
+import LineHeightComponent from "@/components/layout/Header/LineHeightComponent.tsx";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -29,11 +30,13 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             folding: parameters.folding,
             suggestions: parameters.suggestions,
             showErrors: parameters.showErrors,
-            mouseWheelZoom: parameters.mouseWheelZoom,
             rootName: parameters.rootName,
             prefix: parameters.prefix,
             namespace: parameters.namespace,
             flow: parameters.flow,
+            wordWrap: parameters.wordWrap,
+            lineNumbers: parameters.lineNumbers,
+            lineHeight: parameters.lineHeight,
             autoSave: parameters.autoSave
         }
     });
@@ -47,161 +50,199 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
     return <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 select-none ">
 
+        {/*------------------------- TypeScript Settings -------------------------*/}
 
-        {/*------------------------- Font size -------------------------*/}
+        <div className="flex flex-col gap-4">
+            <p className="font-extrabold text-center">TypeScript</p>
 
-        <div className="flex items-center justify-between">
+            {/*------------------------- Root Name -------------------------*/}
 
-            <p>Font size</p>
-            <FontSizeInputComponent register={register} setValue={setValue} watch={watch}/>
+            <div className="flex items-center justify-between">
+
+                <p>Root name</p>
+                <Input key="rootName" type="text" {...register("rootName")}
+                       className="w-25 text-center"/>
+            </div>
+
+            {/*------------------------- Prefix -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <div className="flex items-center justify-center gap-2">
+                    <p>Prefix</p>
+
+                    <CustomToolTip key="namespace tooltip"
+                                   tooltip={settings_menu_list.info.prefix} w50>
+                        <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"
+                              onClick={(e: React.MouseEvent): void => {
+                                  e.preventDefault();
+                              }}/>
+                    </CustomToolTip>
+
+                </div>
+
+                <Input key="prefix" type="text" {...register("prefix")}
+                       className="w-25 text-center"/>
+            </div>
+
+
+            {/*------------------------- Namespace -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <div className="flex items-center justify-center gap-2">
+                    <p>Namespace</p>
+
+                    <CustomToolTip key="namespace tooltip"
+                                   tooltip={settings_menu_list.info.namespace} w50>
+                        <Info onClick={(e: React.MouseEvent): void => {
+                            e.preventDefault();
+                        }} className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
+                    </CustomToolTip>
+
+                </div>
+                <Input key="namespace" type="text" {...register("namespace")}
+                       className="w-25 text-center"/>
+            </div>
+
+
+            {/*------------------------- Flow -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <p>Flow</p>
+                <Checkbox key="flow" checked={watch("flow")} onCheckedChange={(checked) => {
+                    setValue("flow", checked as boolean);
+                }} {...register("flow")} className="cursor-pointer"/>
+
+
+            </div>
         </div>
 
+        <hr/>
 
-        {/*------------------------- Root Name -------------------------*/}
+        {/*------------------------- Editor Settings -------------------------*/}
 
-        <div className="flex items-center justify-between">
 
-            <p>Root name</p>
-            <Input key="rootName" type="text" {...register("rootName")}
-                   className="w-25 text-center"/>
-        </div>
+        <div className="flex flex-col gap-4">
+            <p className="font-extrabold text-center">Editor</p>
 
-        {/*------------------------- Prefix -------------------------*/}
 
-        <div className="flex items-center justify-between">
+            {/*------------------------- Font size -------------------------*/}
 
-            <div className="flex items-center justify-center gap-2">
-                <p>Prefix</p>
+            <div className="flex items-center justify-between">
 
-                <CustomToolTip key="namespace tooltip"
-                               tooltip={settings_menu_list.info.prefix} w50>
-                    <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
-                </CustomToolTip>
+                <p>Font size</p>
+                <FontSizeInputComponent register={register} setValue={setValue} watch={watch}/>
+            </div>
+
+            {/*------------------------- Line Height -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <p>Line height</p>
+                <LineHeightComponent register={register} setValue={setValue} watch={watch}/>
+            </div>
+
+            {/*------------------------- Map Visible -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <p>Mini map</p>
+                <Checkbox key="mapVisible" checked={watch("mapVisible")} onCheckedChange={(checked) => {
+                    setValue("mapVisible", checked as boolean);
+                }} {...register("mapVisible")} className="cursor-pointer"/>
+
 
             </div>
 
-            <Input key="prefix" type="text" {...register("prefix")}
-                   className="w-25 text-center"/>
-        </div>
 
+            {/*------------------------- Suggestions -------------------------*/}
 
-        {/*------------------------- Namespace -------------------------*/}
+            <div className="flex items-center justify-between">
 
-        <div className="flex items-center justify-between">
+                <p>Suggestions</p>
+                <Checkbox key="suggestions" checked={watch("suggestions")} onCheckedChange={(checked) => {
+                    setValue("suggestions", checked as boolean);
+                }} {...register("suggestions")} className="cursor-pointer"/>
 
-            <div className="flex items-center justify-center gap-2">
-                <p>Namespace</p>
-
-                <CustomToolTip key="namespace tooltip"
-                               tooltip={settings_menu_list.info.namespace} w50>
-                    <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
-                </CustomToolTip>
-
-            </div>
-            <Input key="namespace" type="text" {...register("namespace")}
-                   className="w-25 text-center"/>
-        </div>
-
-
-        {/*------------------------- Flow -------------------------*/}
-
-        <div className="flex items-center justify-between">
-
-            <p>Flow</p>
-            <Checkbox key="flow" checked={watch("flow")} onCheckedChange={(checked) => {
-                setValue("flow", checked as boolean);
-            }} {...register("flow")} className="cursor-pointer"/>
-
-
-        </div>
-
-
-        {/*------------------------- Map Visible -------------------------*/}
-
-        <div className="flex items-center justify-between">
-
-            <p>Mini map</p>
-            <Checkbox key="mapVisible" checked={watch("mapVisible")} onCheckedChange={(checked) => {
-                setValue("mapVisible", checked as boolean);
-            }} {...register("mapVisible")} className="cursor-pointer"/>
-
-
-        </div>
-
-
-        {/*------------------------- Suggestions -------------------------*/}
-
-        <div className="flex items-center justify-between">
-
-            <p>Suggestions</p>
-            <Checkbox key="suggestions" checked={watch("suggestions")} onCheckedChange={(checked) => {
-                setValue("suggestions", checked as boolean);
-            }} {...register("suggestions")} className="cursor-pointer"/>
-
-
-        </div>
-
-
-        {/*------------------------- Folding -------------------------*/}
-
-        <div className="flex items-center justify-between">
-
-            <p>Folding</p>
-            <Checkbox key="folding" checked={watch("folding")} onCheckedChange={(checked) => {
-                setValue("folding", checked as boolean);
-            }} {...register("folding")} className="cursor-pointer"/>
-
-
-        </div>
-
-        {/*------------------------- Code Errors Showing -------------------------*/}
-
-        <div className="flex items-center justify-between">
-
-            <p>Show errors</p>
-            <Checkbox key="showErrors" checked={watch("showErrors")} onCheckedChange={(checked) => {
-                setValue("showErrors", checked as boolean);
-            }} {...register("showErrors")} className="cursor-pointer"/>
-
-
-        </div>
-
-
-        {/*------------------------- Mouse Wheel Zoom -------------------------*/}
-
-        <div className="flex items-center justify-between">
-
-            <p>Mouse wheel zoom</p>
-            <Checkbox key="mouseWheelZoom" checked={watch("mouseWheelZoom")} onCheckedChange={(checked) => {
-                setValue("mouseWheelZoom", checked as boolean);
-            }} {...register("mouseWheelZoom")} className="cursor-pointer"/>
-
-
-        </div>
-
-
-        {/*------------------------- Auto Save -------------------------*/}
-
-        <div className="flex items-center justify-between">
-            <div className="flex items-center justify-center gap-2">
-                <p>Auto save</p>
-
-                <CustomToolTip key="namespace tooltip"
-                               tooltip={settings_menu_list.info.autoSave} w50>
-                    <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
-                </CustomToolTip>
 
             </div>
 
-            <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked) => {
-                setValue("autoSave", checked as boolean);
-            }} {...register("autoSave")} className="cursor-pointer"/>
 
+            {/*------------------------- Folding -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <p>Folding</p>
+                <Checkbox key="folding" checked={watch("folding")} onCheckedChange={(checked) => {
+                    setValue("folding", checked as boolean);
+                }} {...register("folding")} className="cursor-pointer"/>
+
+
+            </div>
+
+            {/*------------------------- Code Errors Showing -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <p>Show errors</p>
+                <Checkbox key="showErrors" checked={watch("showErrors")} onCheckedChange={(checked) => {
+                    setValue("showErrors", checked as boolean);
+                }} {...register("showErrors")} className="cursor-pointer"/>
+
+
+            </div>
+
+            {/*------------------------- Word Wrap -------------------------*/}
+
+            <div className="flex items-center justify-between">
+
+                <p>Word wrap</p>
+                <Checkbox key="wordWrap" checked={watch("wordWrap")} onCheckedChange={(checked) => {
+                    setValue("wordWrap", checked as boolean);
+                }} {...register("wordWrap")} className="cursor-pointer"/>
+
+            </div>
+
+            {/*------------------------- Line Numbers -------------------------*/}
+
+
+            <div className="flex items-center justify-between">
+
+                <p>Line numbers</p>
+                <Checkbox key="lineNumbers" checked={watch("lineNumbers")} onCheckedChange={(checked) => {
+                    setValue("lineNumbers", checked as boolean);
+                }} {...register("lineNumbers")} className="cursor-pointer"/>
+
+            </div>
+
+
+            {/*------------------------- Auto Save -------------------------*/}
+
+            <div className="flex items-center justify-between">
+                <div className="flex items-center justify-center gap-2">
+                    <p>Auto save</p>
+
+                    <CustomToolTip key="namespace tooltip"
+                                   tooltip={settings_menu_list.info.autoSave} w50>
+                        <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"
+                              onClick={(e: React.MouseEvent): void => {
+                                  e.preventDefault();
+                              }}/>
+                    </CustomToolTip>
+
+                </div>
+
+                <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked) => {
+                    setValue("autoSave", checked as boolean);
+                }} {...register("autoSave")} className="cursor-pointer"/>
+
+            </div>
         </div>
 
 
         {/*------------------------- Buttons -------------------------*/}
-
 
         <div className="flex items-center justify-center gap-3">
             <Button size={"sm"}
@@ -223,6 +264,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <ShinyText className="text-[.7rem] text-center" text={"Made with ❤️ by"} link={"user01101111000"}
                    href={"https://github.com/user01101111000"}/>
+
     </form>
 };
 
