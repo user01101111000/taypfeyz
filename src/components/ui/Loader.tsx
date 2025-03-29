@@ -1,13 +1,7 @@
 import React from "react";
 
-type LoaderProps = {
-    color: string
-};
-
-const Loader: React.FC<LoaderProps> = ({color}: LoaderProps) => {
-    return <span className="loader" style={{
-        borderColor: `${color} transparent`
-    }}></span>
+const Loader: () => React.JSX.Element = (): React.JSX.Element => {
+    return <span className="loader"></span>
 };
 
 export default Loader;

@@ -13,6 +13,7 @@ import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import settings_menu_list from "@/constants/settings_menu_list.ts";
 import ShinyText from "@/components/ui/ShinyText.tsx";
 import LineHeightComponent from "@/components/layout/Header/LineHeightComponent.tsx";
+import {CheckedState} from "@radix-ui/react-checkbox";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -53,7 +54,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
         {/*------------------------- TypeScript Settings -------------------------*/}
 
         <div className="flex flex-col gap-4">
-            <p className="font-extrabold text-center">TypeScript</p>
+            <p className="font-extrabold text-center">🚀 TypeScript 🚀</p>
 
             {/*------------------------- Root Name -------------------------*/}
 
@@ -111,7 +112,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Flow</p>
-                <Checkbox key="flow" checked={watch("flow")} onCheckedChange={(checked) => {
+                <Checkbox key="flow" checked={watch("flow")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("flow", checked as boolean);
                 }} {...register("flow")} className="cursor-pointer"/>
 
@@ -125,7 +126,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
 
         <div className="flex flex-col gap-4">
-            <p className="font-extrabold text-center">Editor</p>
+            <p className="font-extrabold text-center">🛠️ Editor 🛠️</p>
 
 
             {/*------------------------- Font size -------------------------*/}
@@ -149,9 +150,10 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Mini map</p>
-                <Checkbox key="mapVisible" checked={watch("mapVisible")} onCheckedChange={(checked) => {
-                    setValue("mapVisible", checked as boolean);
-                }} {...register("mapVisible")} className="cursor-pointer"/>
+                <Checkbox key="mapVisible" checked={watch("mapVisible")}
+                          onCheckedChange={(checked: CheckedState): void => {
+                              setValue("mapVisible", checked as boolean);
+                          }} {...register("mapVisible")} className="cursor-pointer"/>
 
 
             </div>
@@ -162,9 +164,10 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Suggestions</p>
-                <Checkbox key="suggestions" checked={watch("suggestions")} onCheckedChange={(checked) => {
-                    setValue("suggestions", checked as boolean);
-                }} {...register("suggestions")} className="cursor-pointer"/>
+                <Checkbox key="suggestions" checked={watch("suggestions")}
+                          onCheckedChange={(checked: CheckedState): void => {
+                              setValue("suggestions", checked as boolean);
+                          }} {...register("suggestions")} className="cursor-pointer"/>
 
 
             </div>
@@ -175,7 +178,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Folding</p>
-                <Checkbox key="folding" checked={watch("folding")} onCheckedChange={(checked) => {
+                <Checkbox key="folding" checked={watch("folding")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("folding", checked as boolean);
                 }} {...register("folding")} className="cursor-pointer"/>
 
@@ -187,9 +190,10 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Show errors</p>
-                <Checkbox key="showErrors" checked={watch("showErrors")} onCheckedChange={(checked) => {
-                    setValue("showErrors", checked as boolean);
-                }} {...register("showErrors")} className="cursor-pointer"/>
+                <Checkbox key="showErrors" checked={watch("showErrors")}
+                          onCheckedChange={(checked: CheckedState): void => {
+                              setValue("showErrors", checked as boolean);
+                          }} {...register("showErrors")} className="cursor-pointer"/>
 
 
             </div>
@@ -199,7 +203,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Word wrap</p>
-                <Checkbox key="wordWrap" checked={watch("wordWrap")} onCheckedChange={(checked) => {
+                <Checkbox key="wordWrap" checked={watch("wordWrap")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("wordWrap", checked as boolean);
                 }} {...register("wordWrap")} className="cursor-pointer"/>
 
@@ -211,9 +215,10 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Line numbers</p>
-                <Checkbox key="lineNumbers" checked={watch("lineNumbers")} onCheckedChange={(checked) => {
-                    setValue("lineNumbers", checked as boolean);
-                }} {...register("lineNumbers")} className="cursor-pointer"/>
+                <Checkbox key="lineNumbers" checked={watch("lineNumbers")}
+                          onCheckedChange={(checked: CheckedState): void => {
+                              setValue("lineNumbers", checked as boolean);
+                          }} {...register("lineNumbers")} className="cursor-pointer"/>
 
             </div>
 
@@ -234,7 +239,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                 </div>
 
-                <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked) => {
+                <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("autoSave", checked as boolean);
                 }} {...register("autoSave")} className="cursor-pointer"/>
 

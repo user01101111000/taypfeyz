@@ -121,7 +121,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 lineHeight: parameters.lineHeight,
                 lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
-            loading={<Loader color="white"/>}
+            loading={<Loader/>}
             beforeMount={(): void => {
                 if (parameters.autoSave) {
                     const last_code: string | null = window.localStorage.getItem("code");

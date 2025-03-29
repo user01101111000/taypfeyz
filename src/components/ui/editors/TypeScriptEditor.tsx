@@ -29,10 +29,8 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
     const {parameters} = useSettings();
 
     React.useEffect((): void => {
-
         try {
             if (code) {
-
                 const interface_code: string = json2ts(code, {
                     rootName: parameters.rootName,
                     prefix: parameters.prefix,
@@ -44,20 +42,18 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
             } else setInterfaceCode("")
 
-
-        } catch (e) {
-            setInterfaceCode("// This format not supported.")
+        } catch (_) {
+            setInterfaceCode("// This format not supported.");
         }
-
 
     }, [code, parameters.rootName, parameters.prefix, parameters.namespace, parameters.flow])
 
     return <div className="w-full h-full overflow-hidden grid grid-rows-[auto_1fr] bg-[#1e1e1e] gap-3">
 
         <div
-            className="py-3 pl-10 pr-7 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E]">
+            className="py-3 pl-10 pr-7 border-t-1 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E] lg:border-t-0">
 
-            <ShinyText text="TypeScript Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]" />
+            <ShinyText text="TypeScript Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]"/>
 
             <div className="flex items-center justify-center gap-3">
 
@@ -129,7 +125,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 lineHeight: parameters.lineHeight,
                 lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
-            loading={<Loader color="white"/>}
+            loading={<Loader/>}
             value={interfaceCode}
         />
     </div>
