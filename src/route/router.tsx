@@ -1,4 +1,4 @@
-import {createBrowserRouter, RouteObject} from "react-router";
+import { createBrowserRouter, RouteObject } from "react-router";
 import Layout from "../layouts/Layout.tsx";
 import React from "react";
 
@@ -8,15 +8,15 @@ const NotFound: React.LazyExoticComponent<() => React.JSX.Element> = React.lazy(
 const routes: RouteObject[] = [
     {
         path: "/home?",
-        element: <Layout/>,
+        element: <Layout />,
         children: [
             {
                 index: true,
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "*",
-                element: <NotFound/>
+                element: <NotFound />
             }
         ]
     }

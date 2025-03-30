@@ -1,7 +1,7 @@
 import React from "react";
 import Editor from '@monaco-editor/react';
-import {useSettings} from "@/context/SettingsContext.tsx";
-import {Copy, Download, Trash2} from "lucide-react";
+import { useSettings } from "@/context/SettingsContext.tsx";
+import { Copy, Download, Trash2 } from "lucide-react";
 import copy_fn from "@/utils/copy_fn.ts";
 import download_as from "@/utils/download_as.ts";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
@@ -16,16 +16,15 @@ import {
     DropdownMenuTrigger,
     DropdownMenuShortcut,
 } from "@/components/ui/shadcn/dropdown-menu.tsx"
-import {toast} from "sonner";
-import {useCode} from "@/context/CodeContext.tsx";
+import { toast } from "sonner";
+import { useCode } from "@/context/CodeContext.tsx";
 import UploadComponent from "@/components/ui/editors/upload_option/UploadComponent.tsx";
 import ShinyText from "@/components/ui/ShinyText.tsx";
 
-
 const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
-    const {setCode, code} = useCode();
-    const {parameters} = useSettings();
+    const { setCode, code } = useCode();
+    const { parameters } = useSettings();
 
     const handleChange: (value: string | undefined) => void = (value: string | undefined): void => {
         setCode(value || '');
@@ -40,28 +39,28 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
         <div
             className="py-3 pl-10 pr-7 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E]">
 
-            <ShinyText text="JSON Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]"/>
+            <ShinyText text="JSON Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]" />
 
             <div className="flex items-center justify-center gap-3.5">
 
-                <UploadComponent/>
+                <UploadComponent />
 
                 <CustomToolTip key="copy" tooltip="Copy">
                     <Copy aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" onClick={(): void => {
-                        if (code) copy_fn({text: code, message: "Copied."});
-                    }}/>
+                        if (code) copy_fn({ text: code, message: "Copied." });
+                    }} />
                 </CustomToolTip>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger>
-                        <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer"/>
+                        <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>Download as</DropdownMenuLabel>
-                        <DropdownMenuSeparator/>
+                        <DropdownMenuSeparator />
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (code) download_as({content: code, file_type: "json"})
+                            if (code) download_as({ content: code, file_type: "json" })
                             else {
                                 toast.info("No code to download.", {
                                     duration: 1500
@@ -70,12 +69,12 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         }}>
                             JSON
                             <DropdownMenuShortcut>
-                                <Download/>
+                                <Download />
                             </DropdownMenuShortcut>
                         </DropdownMenuItem>
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (code) download_as({content: code, file_type: "txt"});
+                            if (code) download_as({ content: code, file_type: "txt" });
                             else {
                                 toast.info("No code to download.", {
                                     duration: 1500
@@ -84,7 +83,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         }}>
                             TXT
                             <DropdownMenuShortcut>
-                                <Download/>
+                                <Download />
                             </DropdownMenuShortcut>
                         </DropdownMenuItem>
 
@@ -93,10 +92,10 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <Trash2 aria-label="remove all code button" className="h-3.5 w-3.5 cursor-pointer"
-                            onClick={(): void => {
-                                setCode('');
-                                window.localStorage.removeItem("code");
-                            }}/>
+                        onClick={(): void => {
+                            setCode('');
+                            window.localStorage.removeItem("code");
+                        }} />
                 </CustomToolTip>
 
             </div>
@@ -121,7 +120,7 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 lineHeight: parameters.lineHeight,
                 lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
-            loading={<Loader/>}
+            loading={<Loader />}
             beforeMount={(): void => {
                 if (parameters.autoSave) {
                     const last_code: string | null = window.localStorage.getItem("code");

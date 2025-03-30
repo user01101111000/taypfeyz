@@ -4,9 +4,9 @@ import {
     SettingsContextProps,
     SettingsContextProviderProps
 } from "@/types/settings_context_types.ts";
-import {toast} from "sonner";
+import { toast } from "sonner";
 import settings_initial_data from "@/constants/settings_data.ts";
-import {useCode} from "@/context/CodeContext.tsx";
+import { useCode } from "@/context/CodeContext.tsx";
 
 const SettingsContext: React.Context<SettingsContextProps> = React.createContext<SettingsContextProps>({} as SettingsContextProps);
 
@@ -15,7 +15,7 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const localSettingsData: string | null = window.localStorage.getItem("settings");
     const settings: SettingsParametersProps = localSettingsData ? (JSON.parse(localSettingsData) as SettingsParametersProps) : settings_initial_data;
 
-    const {code} = useCode();
+    const { code } = useCode();
 
     if (!localSettingsData) {
         window.localStorage.setItem("settings", JSON.stringify(settings));
@@ -114,4 +114,4 @@ const useSettings: () => SettingsContextProps = (): SettingsContextProps => {
     return context;
 };
 
-export {SettingsProvider, useSettings};
+export { SettingsProvider, useSettings };

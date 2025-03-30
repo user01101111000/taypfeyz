@@ -1,4 +1,4 @@
-import {toast} from "sonner";
+import { toast } from "sonner";
 
 const copy_fn: (data: { text: string, message: string }) => void = (data: { text: string, message: string }): void => {
     navigator.clipboard.writeText(data.text);

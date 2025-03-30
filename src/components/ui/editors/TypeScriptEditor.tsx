@@ -1,12 +1,12 @@
 import React from "react";
 import Editor from '@monaco-editor/react';
-import {useSettings} from "@/context/SettingsContext.tsx";
-import {Copy, Download} from "lucide-react";
+import { useSettings } from "@/context/SettingsContext.tsx";
+import { Copy, Download } from "lucide-react";
 import copy_fn from "@/utils/copy_fn.ts";
 import download_as from "@/utils/download_as.ts";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import Loader from "@/components/ui/Loader.tsx";
-import {json2ts} from "json-ts"
+import { json2ts } from "json-ts"
 
 import {
     DropdownMenu,
@@ -17,16 +17,16 @@ import {
     DropdownMenuTrigger,
     DropdownMenuShortcut,
 } from "@/components/ui/shadcn/dropdown-menu.tsx"
-import {toast} from "sonner";
-import {useCode} from "@/context/CodeContext.tsx";
+import { toast } from "sonner";
+import { useCode } from "@/context/CodeContext.tsx";
 import ShinyText from "@/components/ui/ShinyText.tsx";
 
 
 const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
-    const {code} = useCode();
+    const { code } = useCode();
     const [interfaceCode, setInterfaceCode] = React.useState('');
-    const {parameters} = useSettings();
+    const { parameters } = useSettings();
 
     React.useEffect((): void => {
         try {
@@ -53,26 +53,26 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
         <div
             className="py-3 pl-10 pr-7 border-t-1 border-b-[1px] border-rgba(255,255,255,0.05) flex items-center justify-between gap-2 bg-[#1E1E1E] lg:border-t-0">
 
-            <ShinyText text="TypeScript Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]"/>
+            <ShinyText text="TypeScript Editor" className="font-extrabold text-[.8rem] lg:text-[1rem]" />
 
             <div className="flex items-center justify-center gap-3">
 
                 <CustomToolTip key="copy" tooltip="Copy">
                     <Copy aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" onClick={(): void => {
-                        if (interfaceCode) copy_fn({text: interfaceCode, message: "Copied."});
-                    }}/>
+                        if (interfaceCode) copy_fn({ text: interfaceCode, message: "Copied." });
+                    }} />
                 </CustomToolTip>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger>
-                        <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer"/>
+                        <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>Download as</DropdownMenuLabel>
-                        <DropdownMenuSeparator/>
+                        <DropdownMenuSeparator />
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (interfaceCode) download_as({content: interfaceCode, file_type: "ts"});
+                            if (interfaceCode) download_as({ content: interfaceCode, file_type: "ts" });
                             else {
                                 toast.info("No code to download.", {
                                     duration: 1500
@@ -81,12 +81,12 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         }}>
                             TS
                             <DropdownMenuShortcut>
-                                <Download/>
+                                <Download />
                             </DropdownMenuShortcut>
                         </DropdownMenuItem>
 
                         <DropdownMenuItem className="cursor-pointer" onClick={(): void => {
-                            if (interfaceCode) download_as({content: interfaceCode, file_type: "txt"});
+                            if (interfaceCode) download_as({ content: interfaceCode, file_type: "txt" });
                             else {
                                 toast.info("No code to download.", {
                                     duration: 1500
@@ -95,7 +95,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         }}>
                             TXT
                             <DropdownMenuShortcut>
-                                <Download/>
+                                <Download />
                             </DropdownMenuShortcut>
                         </DropdownMenuItem>
 
@@ -125,7 +125,7 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 lineHeight: parameters.lineHeight,
                 lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
-            loading={<Loader/>}
+            loading={<Loader />}
             value={interfaceCode}
         />
     </div>

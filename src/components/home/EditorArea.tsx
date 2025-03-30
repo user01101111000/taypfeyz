@@ -6,8 +6,8 @@ const EditorArea: () => React.JSX.Element = (): React.JSX.Element => {
 
     return <>
 
-        <JSONEditor key="json editor"/>
-        <TypeScriptEditor key="typescript editor"/>
+        <JSONEditor key="json editor" />
+        <TypeScriptEditor key="typescript editor" />
 
     </>
 };

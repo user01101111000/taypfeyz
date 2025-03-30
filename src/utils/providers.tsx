@@ -1,7 +1,7 @@
 import React from "react";
-import {SettingsProvider} from "@/context/SettingsContext.tsx";
-import {Toaster} from "@/components/ui/shadcn/sonner.tsx"
-import {CodeProvider} from "@/context/CodeContext.tsx";
+import { SettingsProvider } from "@/context/SettingsContext.tsx";
+import { Toaster } from "@/components/ui/shadcn/sonner.tsx"
+import { CodeProvider } from "@/context/CodeContext.tsx";
 
 type ProvidersProps = {
     children: React.ReactNode
@@ -11,7 +11,7 @@ const Providers: React.FC<ProvidersProps> = (props: ProvidersProps): React.JSX.E
     return <CodeProvider>
         <SettingsProvider>
             {props.children}
-            <Toaster/>
+            <Toaster />
         </SettingsProvider>
     </CodeProvider>;
 };

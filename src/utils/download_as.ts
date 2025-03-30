@@ -22,7 +22,7 @@ const download_as: (data: DownloadProps) => void = (data: DownloadProps): void =
             break;
     }
 
-    const blob = new Blob([data.content], {type: type});
+    const blob = new Blob([data.content], { type: type });
 
     const url: string = URL.createObjectURL(blob);
     const link: HTMLAnchorElement = document.createElement("a");
