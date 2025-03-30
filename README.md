@@ -1,24 +1,22 @@
-<div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
- 
-<div align="center" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
- 
-<a href="https://taypfeyz.vercel.app" style="display: inline-block">
-     <img alt="taypfeyz logo" src="public/icons/favicon.svg" width="20%" />
-  </a>
+<div align="center">
 
-  <a href="https://taypfeyz.vercel.app" style="display: inline-block">
-     <img alt="taypfeyz site" src="public/images/taypfeyz_text.png" width="30%" />
-  </a>
-</div>
+<a href="https://taypfeyz.vercel.app">
+  <img alt="taypfeyz logo" src="public/icons/favicon.svg" width="20%" />
+</a>
 
-<div style="display: flex; row-gap: 10px; justify-content: center; align-items: center">
+<br>
 
-[![GitHub stars](https://img.shields.io/github/stars/user01101111000/taypfeyz?style=social)](https://github.com/user01101111000/taypfeyz)
+<a href="https://taypfeyz.vercel.app">
+  <img alt="taypfeyz site" src="public/images/taypfeyz_text.png" width="30%" />
+</a>
+
+<br>
+
+[![GitHub stars](https://img.shields.io/github/stars/user01101111000/taypfeyz?style=social)](https://github.com/user01101111000/taypfeyz)  
 [![GitHub issues](https://img.shields.io/github/issues/user01101111000/taypfeyz?style=social)](https://github.com/user01101111000/taypfeyz/issues)
 
 </div>
 
-</div>
 
 ## Getting Started 🚀
 
