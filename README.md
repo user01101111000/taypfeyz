@@ -12,7 +12,8 @@
 
 <br>
 
-[![GitHub stars](https://img.shields.io/github/stars/user01101111000/taypfeyz?style=social)](https://github.com/user01101111000/taypfeyz)  
+[![GitHub stars](https://img.shields.io/github/stars/user01101111000/taypfeyz?style=social)](https://github.com/user01101111000/taypfeyz)
+&nbsp;&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues/user01101111000/taypfeyz?style=social)](https://github.com/user01101111000/taypfeyz/issues)
 
 </div>
