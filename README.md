@@ -1,9 +1,9 @@
-<div align="center" style="display: flex; flex-direction: column; column-gap: 2px;">
-  <a href="https://taypfeyz.vercel.app">
+<div align="center" style="display: flex; flex-direction: column">
+  <a href="https://taypfeyz.vercel.app" style="display: inline-block">
      <img alt="taypfeyz logo" src="public/icons/favicon.svg" width="20%" />
   </a>
 
-  <a href="https://taypfeyz.vercel.app">
+  <a href="https://taypfeyz.vercel.app" style="display: inline-block">
      <img alt="taypfeyz site" src="public/images/taypfeyz_text.png" width="30%" />
   </a>
 
