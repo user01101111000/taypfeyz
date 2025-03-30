@@ -12,7 +12,6 @@ const settings_initial_data: SettingsParametersProps = {
     showErrors: true,
     wordWrap: false,
     lineNumbers: true,
-    lineHeight: 24,
     autoSave: true
 };
 

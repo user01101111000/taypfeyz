@@ -13,7 +13,6 @@ const settings_schema: z.ZodType<SettingsParametersProps> = z.object({
     showErrors: z.boolean(),
     wordWrap: z.boolean(),
     lineNumbers: z.boolean(),
-    lineHeight: z.number().min(20).max(30),
     autoSave: z.boolean()
 });
 

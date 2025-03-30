@@ -17,7 +17,6 @@ export type SettingsParametersProps = {
     suggestions: boolean,
     showErrors: boolean,
     wordWrap: boolean,
-    lineHeight: number,
     lineNumbers: boolean,
     autoSave: boolean
 }

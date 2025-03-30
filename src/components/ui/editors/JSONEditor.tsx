@@ -96,15 +96,15 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <Trash2 aria-label="remove all code button" className="h-3.5 w-3.5 cursor-pointer"
                         onClick={(): void => {
-                            if (code) {
-                                setCode('');
-                                window.localStorage.removeItem("code");
-                            }
-                            else {
-                                toast.info("No code to remove.", {
-                                    duration: 1500
-                                });
-                            }
+                           if(code){
+                            setCode('');
+                            window.localStorage.removeItem("code");
+                           }
+                           else {
+                            toast.info("No code to remove.", {
+                                duration: 1500
+                            });
+                           }
                         }} />
                 </CustomToolTip>
 
@@ -127,7 +127,6 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 renderValidationDecorations: parameters.showErrors ? "on" : "off",
 
                 wordWrap: parameters.wordWrap ? "on" : "off",
-                lineHeight: parameters.lineHeight,
                 lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
             loading={<Loader />}

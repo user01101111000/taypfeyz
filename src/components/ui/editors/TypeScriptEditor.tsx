@@ -42,8 +42,12 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
             } else setInterfaceCode("")
 
-        } catch (_) {
-            setInterfaceCode("// This format not supported.");
+        } catch (e) {
+            const errorMessage: string = e instanceof Error ? e.name : "Unknown error";
+
+            if (errorMessage === "TypeError") setInterfaceCode("// This format not supported.");
+            else setInterfaceCode("// This format is unknown.");
+
         }
 
     }, [code, parameters.rootName, parameters.prefix, parameters.namespace, parameters.flow])
@@ -127,7 +131,6 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 renderValidationDecorations: parameters.showErrors ? "on" : "off",
 
                 wordWrap: parameters.wordWrap ? "on" : "off",
-                lineHeight: parameters.lineHeight,
                 lineNumbers: parameters.lineNumbers ? "on" : "off",
             }}
             loading={<Loader />}

@@ -32,7 +32,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
     const [folding, setFolding] = React.useState<boolean>(settings.folding);
     const [showErrors, setShowErrors] = React.useState<boolean>(settings.showErrors);
     const [wordWrap, setWordWrap] = React.useState<boolean>(settings.wordWrap);
-    const [lineHeight, setLineHeight] = React.useState<number>(settings.lineHeight);
     const [lineNumbers, setLineNumbers] = React.useState<boolean>(settings.lineNumbers);
     const [autoSave, setAutoSave] = React.useState<boolean>(settings.autoSave);
 
@@ -47,7 +46,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setFolding(settings_initial_data.folding);
         setShowErrors(settings_initial_data.showErrors);
         setWordWrap(settings_initial_data.wordWrap);
-        setLineHeight(settings_initial_data.lineHeight);
         setLineNumbers(settings_initial_data.lineNumbers);
         setAutoSave(settings_initial_data.autoSave);
 
@@ -70,7 +68,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
         setFolding(data.folding);
         setShowErrors(data.showErrors);
         setWordWrap(data.wordWrap);
-        setLineHeight(data.lineHeight);
         setLineNumbers(data.lineNumbers);
         setAutoSave(data.autoSave);
 
@@ -96,7 +93,6 @@ const SettingsProvider: React.FC<SettingsContextProviderProps> = (props: Setting
             folding,
             showErrors,
             wordWrap,
-            lineHeight,
             lineNumbers,
             autoSave
         },

@@ -1,29 +1,28 @@
 import React from "react";
-import {Input} from "@/components/ui/shadcn/input.tsx";
-import {Checkbox} from "@/components/ui/shadcn/checkbox.tsx";
-import {Button} from "@/components/ui/shadcn/button.tsx";
-import {SubmitHandler, useForm} from "react-hook-form";
-import {SettingsParametersProps} from "@/types/settings_context_types.ts";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {useSettings} from "@/context/SettingsContext.tsx";
+import { Input } from "@/components/ui/shadcn/input.tsx";
+import { Checkbox } from "@/components/ui/shadcn/checkbox.tsx";
+import { Button } from "@/components/ui/shadcn/button.tsx";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { SettingsParametersProps } from "@/types/settings_context_types.ts";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useSettings } from "@/context/SettingsContext.tsx";
 import settings_schema from "@/utils/schemas/settings_schema.ts";
 import FontSizeInputComponent from "@/components/layout/Header/FontSizeInputComponent.tsx";
-import {Info} from "lucide-react";
+import { Info } from "lucide-react";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
 import settings_menu_list from "@/constants/settings_menu_list.ts";
 import ShinyText from "@/components/ui/ShinyText.tsx";
-import LineHeightComponent from "@/components/layout/Header/LineHeightComponent.tsx";
-import {CheckedState} from "@radix-ui/react-checkbox";
+import { CheckedState } from "@radix-ui/react-checkbox";
 
 type SettingsMenuListProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMenuListProps): React.JSX.Element => {
+const SettingsMenuList: React.FC<SettingsMenuListProps> = ({ setOpen }: SettingsMenuListProps): React.JSX.Element => {
 
-    const {parameters, save, reset} = useSettings();
+    const { parameters, save, reset } = useSettings();
 
-    const {register, handleSubmit, watch, setValue} = useForm<SettingsParametersProps>({
+    const { register, handleSubmit, watch, setValue } = useForm<SettingsParametersProps>({
         resolver: zodResolver(settings_schema),
         defaultValues: {
             fontSize: parameters.fontSize,
@@ -37,7 +36,6 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             flow: parameters.flow,
             wordWrap: parameters.wordWrap,
             lineNumbers: parameters.lineNumbers,
-            lineHeight: parameters.lineHeight,
             autoSave: parameters.autoSave
         }
     });
@@ -62,7 +60,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                 <p>Root name</p>
                 <Input key="rootName" type="text" {...register("rootName")}
-                       className="w-25 text-center"/>
+                    className="w-25 text-center" />
             </div>
 
             {/*------------------------- Prefix -------------------------*/}
@@ -73,17 +71,17 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                     <p>Prefix</p>
 
                     <CustomToolTip key="namespace tooltip"
-                                   tooltip={settings_menu_list.info.prefix} w50>
+                        tooltip={settings_menu_list.info.prefix} w50>
                         <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"
-                              onClick={(e: React.MouseEvent): void => {
-                                  e.preventDefault();
-                              }}/>
+                            onClick={(e: React.MouseEvent): void => {
+                                e.preventDefault();
+                            }} />
                     </CustomToolTip>
 
                 </div>
 
                 <Input key="prefix" type="text" {...register("prefix")}
-                       className="w-25 text-center"/>
+                    className="w-25 text-center" />
             </div>
 
 
@@ -95,15 +93,15 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                     <p>Namespace</p>
 
                     <CustomToolTip key="namespace tooltip"
-                                   tooltip={settings_menu_list.info.namespace} w50>
+                        tooltip={settings_menu_list.info.namespace} w50>
                         <Info onClick={(e: React.MouseEvent): void => {
                             e.preventDefault();
-                        }} className="h-3.5 w-3.5 cursor-pointer opacity-50"/>
+                        }} className="h-3.5 w-3.5 cursor-pointer opacity-50" />
                     </CustomToolTip>
 
                 </div>
                 <Input key="namespace" type="text" {...register("namespace")}
-                       className="w-25 text-center"/>
+                    className="w-25 text-center" />
             </div>
 
 
@@ -114,13 +112,13 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                 <p>Flow</p>
                 <Checkbox key="flow" checked={watch("flow")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("flow", checked as boolean);
-                }} {...register("flow")} className="cursor-pointer"/>
+                }} {...register("flow")} className="cursor-pointer" />
 
 
             </div>
         </div>
 
-        <hr/>
+        <hr />
 
         {/*------------------------- Editor Settings -------------------------*/}
 
@@ -134,15 +132,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
             <div className="flex items-center justify-between">
 
                 <p>Font size</p>
-                <FontSizeInputComponent register={register} setValue={setValue} watch={watch}/>
-            </div>
-
-            {/*------------------------- Line Height -------------------------*/}
-
-            <div className="flex items-center justify-between">
-
-                <p>Line height</p>
-                <LineHeightComponent register={register} setValue={setValue} watch={watch}/>
+                <FontSizeInputComponent register={register} setValue={setValue} watch={watch} />
             </div>
 
             {/*------------------------- Map Visible -------------------------*/}
@@ -151,11 +141,9 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                 <p>Mini map</p>
                 <Checkbox key="mapVisible" checked={watch("mapVisible")}
-                          onCheckedChange={(checked: CheckedState): void => {
-                              setValue("mapVisible", checked as boolean);
-                          }} {...register("mapVisible")} className="cursor-pointer"/>
-
-
+                    onCheckedChange={(checked: CheckedState): void => {
+                        setValue("mapVisible", checked as boolean);
+                    }} {...register("mapVisible")} className="cursor-pointer" />
             </div>
 
 
@@ -165,9 +153,9 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                 <p>Suggestions</p>
                 <Checkbox key="suggestions" checked={watch("suggestions")}
-                          onCheckedChange={(checked: CheckedState): void => {
-                              setValue("suggestions", checked as boolean);
-                          }} {...register("suggestions")} className="cursor-pointer"/>
+                    onCheckedChange={(checked: CheckedState): void => {
+                        setValue("suggestions", checked as boolean);
+                    }} {...register("suggestions")} className="cursor-pointer" />
 
 
             </div>
@@ -180,7 +168,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                 <p>Folding</p>
                 <Checkbox key="folding" checked={watch("folding")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("folding", checked as boolean);
-                }} {...register("folding")} className="cursor-pointer"/>
+                }} {...register("folding")} className="cursor-pointer" />
 
 
             </div>
@@ -191,9 +179,9 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                 <p>Show errors</p>
                 <Checkbox key="showErrors" checked={watch("showErrors")}
-                          onCheckedChange={(checked: CheckedState): void => {
-                              setValue("showErrors", checked as boolean);
-                          }} {...register("showErrors")} className="cursor-pointer"/>
+                    onCheckedChange={(checked: CheckedState): void => {
+                        setValue("showErrors", checked as boolean);
+                    }} {...register("showErrors")} className="cursor-pointer" />
 
 
             </div>
@@ -205,7 +193,7 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                 <p>Word wrap</p>
                 <Checkbox key="wordWrap" checked={watch("wordWrap")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("wordWrap", checked as boolean);
-                }} {...register("wordWrap")} className="cursor-pointer"/>
+                }} {...register("wordWrap")} className="cursor-pointer" />
 
             </div>
 
@@ -216,9 +204,9 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
                 <p>Line numbers</p>
                 <Checkbox key="lineNumbers" checked={watch("lineNumbers")}
-                          onCheckedChange={(checked: CheckedState): void => {
-                              setValue("lineNumbers", checked as boolean);
-                          }} {...register("lineNumbers")} className="cursor-pointer"/>
+                    onCheckedChange={(checked: CheckedState): void => {
+                        setValue("lineNumbers", checked as boolean);
+                    }} {...register("lineNumbers")} className="cursor-pointer" />
 
             </div>
 
@@ -230,18 +218,18 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
                     <p>Auto save</p>
 
                     <CustomToolTip key="namespace tooltip"
-                                   tooltip={settings_menu_list.info.autoSave} w50>
+                        tooltip={settings_menu_list.info.autoSave} w50>
                         <Info className="h-3.5 w-3.5 cursor-pointer opacity-50"
-                              onClick={(e: React.MouseEvent): void => {
-                                  e.preventDefault();
-                              }}/>
+                            onClick={(e: React.MouseEvent): void => {
+                                e.preventDefault();
+                            }} />
                     </CustomToolTip>
 
                 </div>
 
                 <Checkbox key="autoSave" checked={watch("autoSave")} onCheckedChange={(checked: CheckedState): void => {
                     setValue("autoSave", checked as boolean);
-                }} {...register("autoSave")} className="cursor-pointer"/>
+                }} {...register("autoSave")} className="cursor-pointer" />
 
             </div>
         </div>
@@ -251,24 +239,24 @@ const SettingsMenuList: React.FC<SettingsMenuListProps> = ({setOpen}: SettingsMe
 
         <div className="flex items-center justify-center gap-3">
             <Button size={"sm"}
-                    type="submit"
-                    className="flex-1/2 cursor-pointer font-medium hover:bg-white hover:text-black transition-all duration-200">Save</Button>
+                type="submit"
+                className="flex-1/2 cursor-pointer font-medium hover:bg-white hover:text-black transition-all duration-200">Save</Button>
             <Button size={"sm"}
-                    type="button"
-                    className="flex-1/2 cursor-pointer font-medium hover:bg-white hover:text-black transition-all duration-200"
-                    onClick={(): void => {
+                type="button"
+                className="flex-1/2 cursor-pointer font-medium hover:bg-white hover:text-black transition-all duration-200"
+                onClick={(): void => {
 
-                        reset();
-                        setValue("fontSize", 16);
-                        setValue("mapVisible", true);
+                    reset();
+                    setValue("fontSize", 16);
+                    setValue("mapVisible", true);
 
-                        setOpen(false);
+                    setOpen(false);
 
-                    }}>Reset</Button>
+                }}>Reset</Button>
         </div>
 
         <ShinyText className="text-[.7rem] text-center" text={"Made with ❤️ by"} link={"user01101111000"}
-                   href={"https://github.com/user01101111000"}/>
+            href={"https://github.com/user01101111000"} />
 
     </form>
 };

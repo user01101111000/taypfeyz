@@ -10,13 +10,13 @@ type ShinyTextProps = {
 }
 
 const ShinyText: React.FC<ShinyTextProps> = ({
-                                                 text,
-                                                 disabled = false,
-                                                 speed = 5,
-                                                 className = '',
-                                                 link = "",
-                                                 href = ""
-                                             }: ShinyTextProps): React.JSX.Element => {
+    text,
+    disabled = false,
+    speed = 5,
+    className = "",
+    link = "",
+    href = ""
+}: ShinyTextProps): React.JSX.Element => {
     const animationDuration = `${speed}s`;
 
     return (
@@ -30,7 +30,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
             }}
         >
             {text} {link &&
-            <a className="underline" title="user01101111000 github profile" target="_blank" href={href}>{link}</a>}
+                <a className="underline" title="user01101111000 github profile" target="_blank" href={href}>{link}</a>}
         </div>
     );
 };
