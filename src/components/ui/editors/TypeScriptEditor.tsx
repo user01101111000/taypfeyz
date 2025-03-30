@@ -60,6 +60,11 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 <CustomToolTip key="copy" tooltip="Copy">
                     <Copy aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" onClick={(): void => {
                         if (interfaceCode) copy_fn({ text: interfaceCode, message: "Copied." });
+                        else {
+                            toast.info("No code to copy.", {
+                                duration: 1500
+                            });
+                        }
                     }} />
                 </CustomToolTip>
 

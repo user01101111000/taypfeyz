@@ -27,6 +27,9 @@ type! Designed for developers working with TypeScript, this tool enhances type s
 browser-based functionality means you can use it without any additional software installation. Try it now for a more
 efficient development workflow !
 
+<div align="center"><img src ="public/images/taypfeyz_poster.png" alt="moment" width="100%" title='moment' />
+</div>
+
 ## Features ✨
 
 - Generate TypeScript interfaces from JSON data.

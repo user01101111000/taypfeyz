@@ -48,6 +48,9 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 <CustomToolTip key="copy" tooltip="Copy">
                     <Copy aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" onClick={(): void => {
                         if (code) copy_fn({ text: code, message: "Copied." });
+                        else toast.info("No code to copy.", {
+                            duration: 1500
+                        });
                     }} />
                 </CustomToolTip>
 
@@ -93,8 +96,15 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <Trash2 aria-label="remove all code button" className="h-3.5 w-3.5 cursor-pointer"
                         onClick={(): void => {
-                            setCode('');
-                            window.localStorage.removeItem("code");
+                            if (code) {
+                                setCode('');
+                                window.localStorage.removeItem("code");
+                            }
+                            else {
+                                toast.info("No code to remove.", {
+                                    duration: 1500
+                                });
+                            }
                         }} />
                 </CustomToolTip>
 
