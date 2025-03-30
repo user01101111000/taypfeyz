@@ -1,11 +1,15 @@
-<div align="center" style="display: flex; flex-direction: column">
-  <a href="https://taypfeyz.vercel.app" style="display: inline-block">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+ 
+<div align="center" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+ 
+<a href="https://taypfeyz.vercel.app" style="display: inline-block">
      <img alt="taypfeyz logo" src="public/icons/favicon.svg" width="20%" />
   </a>
 
   <a href="https://taypfeyz.vercel.app" style="display: inline-block">
      <img alt="taypfeyz site" src="public/images/taypfeyz_text.png" width="30%" />
   </a>
+</div>
 
 <div style="display: flex; row-gap: 10px; justify-content: center; align-items: center">
 
