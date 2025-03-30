@@ -1,4 +1,4 @@
-<div align="center" style="display: flex; flex-direction: column; column-gap: 2;">
+<div align="center" style="display: flex; flex-direction: column; column-gap: 2px;">
   <a href="https://taypfeyz.vercel.app">
      <img alt="taypfeyz logo" src="public/icons/favicon.svg" width="20%" />
   </a>
@@ -60,7 +60,3 @@ efficient development workflow !
 - **Word wrap**: A feature that moves overflowing text to the next line instead of extending beyond the viewable area.
 - **Line numbers**: Numbers displayed beside each line of code for easy reference.
 - **Auto save**: A feature that automatically saves changes without requiring manual intervention.
-
-## License 📄
-
-This project is released under the [MIT License](https://github.com/user01101111000/taypfeyz/LICENSE).
