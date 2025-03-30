@@ -63,3 +63,9 @@ efficient development workflow !
 - **Word wrap**: A feature that moves overflowing text to the next line instead of extending beyond the viewable area.
 - **Line numbers**: Numbers displayed beside each line of code for easy reference.
 - **Auto save**: A feature that automatically saves changes without requiring manual intervention.
+
+## License 📄
+
+This project is free and open-source. You can use, modify, and distribute it as you wish. If you find this project useful,
+please consider contributing back by [opening an issue](https://github.com/user01101111000/taypfeyz/issues) or
+[opening a pull request](https://github.com/user01101111000/taypfeyz/pulls). Thank you for your support !
