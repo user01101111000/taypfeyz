@@ -66,6 +66,6 @@ efficient development workflow !
 
 ## License 📄
 
-This project is free and open-source. You can use, modify, and distribute it as you wish. If you find this project useful,
+This project is released under the [MIT License](https://github.com/user01101111000/taypfeyz/blob/main/LICENSE). This project is free and open-source. You can use, modify, and distribute it as you wish. If you find this project useful,
 please consider contributing back by [opening an issue](https://github.com/user01101111000/taypfeyz/issues) or
 [opening a pull request](https://github.com/user01101111000/taypfeyz/pulls). Thank you for your support !
