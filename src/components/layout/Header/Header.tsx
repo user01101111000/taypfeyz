@@ -1,8 +1,9 @@
 import React from "react";
-import {NavLink} from "react-router";
+import { NavLink } from "react-router";
 import SettingsMenu from "@/components/layout/Header/SettingsMenu.tsx";
-import {Github} from "lucide-react";
+import { Github } from "lucide-react";
 import CustomToolTip from "@/components/ui/CustomToolTip.tsx";
+import ReactGA from "react-ga4";
 
 const Header: () => React.JSX.Element = (): React.JSX.Element => {
 
@@ -14,12 +15,14 @@ const Header: () => React.JSX.Element = (): React.JSX.Element => {
 
             <div className="flex items-center justify-center gap-2.5">
 
-                <SettingsMenu/>
+                <SettingsMenu />
 
                 <CustomToolTip key="github" tooltip="Github">
                     <a key="github" href="https://github.com/user01101111000/taypfeyz" title="Source code"
-                       target="_blank">
-                        <Github className="h-4 w-4 cursor-pointer"/>
+                        target="_blank" onClick={(): void => {
+                            ReactGA.event({ category: "header", action: "github clicked !" });
+                        }}>
+                        <Github className="h-4 w-4 cursor-pointer" />
                     </a>
                 </CustomToolTip>
 

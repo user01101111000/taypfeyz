@@ -4,8 +4,9 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/shadcn/popover.tsx"
-import {Settings} from "lucide-react";
+import { Settings } from "lucide-react";
 import SettingsMenuList from "@/components/layout/Header/SettingsMenuList.tsx";
+import ReactGA from "react-ga4";
 
 const SettingsMenu: () => React.JSX.Element = (): React.JSX.Element => {
 
@@ -14,19 +15,22 @@ const SettingsMenu: () => React.JSX.Element = (): React.JSX.Element => {
     React.useEffect((): void => {
         if (open) {
             setTimeout((): void => {
-                document.activeElement instanceof HTMLInputElement && document.activeElement.blur();
+                if (document.activeElement instanceof HTMLInputElement) {
+                    document.activeElement.blur();
+                }
             }, 0);
         }
     }, [open]);
 
-    return <Popover  open={open} onOpenChange={(): void => {
-        setOpen((p: boolean): boolean => !p)
+    return <Popover open={open} onOpenChange={(): void => {
+        setOpen((p: boolean): boolean => !p);
+        ReactGA.event({ category: "header", action: "settings clicked !" });
     }}>
         <PopoverTrigger>
-            <Settings aria-label="setting button" className="h-4 w-4 cursor-pointer"/>
+            <Settings aria-label="setting button" className="h-4 w-4 cursor-pointer" />
         </PopoverTrigger>
         <PopoverContent>
-            <SettingsMenuList setOpen={setOpen}/>
+            <SettingsMenuList setOpen={setOpen} />
         </PopoverContent>
     </Popover>
 

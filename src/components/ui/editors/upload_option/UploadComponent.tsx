@@ -6,10 +6,11 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/shadcn/dialog.tsx"
-import {Upload} from "lucide-react";
+import { Upload } from "lucide-react";
 import React from "react";
 import UploadContentURL from "@/components/ui/editors/upload_option/UploadContentURL.tsx";
 import UploadContentFile from "@/components/ui/editors/upload_option/UploadContentFile.tsx";
+import ReactGA from "react-ga4";
 
 const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
 
@@ -17,9 +18,10 @@ const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
 
     return <Dialog open={open} onOpenChange={(): void => {
         setOpen((p: boolean): boolean => !p);
+        ReactGA.event({ category: "json editor", action: "upload clicked !" });
     }}>
         <DialogTrigger>
-            <Upload aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer"/>
+            <Upload aria-label="copy button" className="h-3.5 w-3.5 cursor-pointer" />
         </DialogTrigger>
         <DialogContent>
             <DialogHeader>
@@ -27,16 +29,16 @@ const UploadComponent: () => React.JSX.Element = (): React.JSX.Element => {
                 <DialogDescription asChild>
                     <div className="flex flex-col gap-7 my-4">
 
-                        <UploadContentURL setOpen={setOpen}/>
+                        <UploadContentURL setOpen={setOpen} />
 
                         <div className="flex items-center justify-center gap-2">
-                            <hr className="border-[rgba(255,255,255,0.5)] flex-1/2"/>
+                            <hr className="border-[rgba(255,255,255,0.5)] flex-1/2" />
                             <p className="font-bold text-[rgba(255,255,255,0.5)]">or</p>
-                            <hr className="border-[rgba(255,255,255,0.5)] flex-1/2"/>
+                            <hr className="border-[rgba(255,255,255,0.5)] flex-1/2" />
                         </div>
 
 
-                        <UploadContentFile setOpen={setOpen}/>
+                        <UploadContentFile setOpen={setOpen} />
 
                     </div>
                 </DialogDescription>

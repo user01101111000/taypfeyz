@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import { useCode } from "@/context/CodeContext.tsx";
 import UploadComponent from "@/components/ui/editors/upload_option/UploadComponent.tsx";
 import ShinyText from "@/components/ui/ShinyText.tsx";
+import ReactGA from "react-ga4";
 
 const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
@@ -51,10 +52,14 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                         else toast.info("No code to copy.", {
                             duration: 1500
                         });
+
+                        ReactGA.event({ category: "json editor", action: "copy clicked !" });
                     }} />
                 </CustomToolTip>
 
-                <DropdownMenu>
+                <DropdownMenu onOpenChange={(): void => {
+                    ReactGA.event({ category: "json editor", action: "download clicked !" });
+                }}>
                     <DropdownMenuTrigger>
                         <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer" />
                     </DropdownMenuTrigger>
@@ -96,15 +101,17 @@ const JSONEditor: () => React.JSX.Element = (): React.JSX.Element => {
                 <CustomToolTip key="remove all code" tooltip="Remove all code">
                     <Trash2 aria-label="remove all code button" className="h-3.5 w-3.5 cursor-pointer"
                         onClick={(): void => {
-                           if(code){
-                            setCode('');
-                            window.localStorage.removeItem("code");
-                           }
-                           else {
-                            toast.info("No code to remove.", {
-                                duration: 1500
-                            });
-                           }
+                            if (code) {
+                                setCode('');
+                                window.localStorage.removeItem("code");
+                            }
+                            else {
+                                toast.info("No code to remove.", {
+                                    duration: 1500
+                                });
+                            }
+
+                            ReactGA.event({ category: "json editor", action: "trash clicked !" });
                         }} />
                 </CustomToolTip>
 

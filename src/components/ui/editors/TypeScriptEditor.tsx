@@ -20,7 +20,7 @@ import {
 import { toast } from "sonner";
 import { useCode } from "@/context/CodeContext.tsx";
 import ShinyText from "@/components/ui/ShinyText.tsx";
-
+import ReactGA from "react-ga4";
 
 const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
 
@@ -69,10 +69,14 @@ const TypeScriptEditor: () => React.JSX.Element = (): React.JSX.Element => {
                                 duration: 1500
                             });
                         }
+
+                        ReactGA.event({ category: "ts editor", action: "copy clicked !" });
                     }} />
                 </CustomToolTip>
 
-                <DropdownMenu>
+                <DropdownMenu onOpenChange={(): void => {
+                    ReactGA.event({ category: "ts editor", action: "download clicked !" });
+                }}>
                     <DropdownMenuTrigger>
                         <Download aria-label="download button" className="h-3.5 w-3.5 cursor-pointer" />
                     </DropdownMenuTrigger>
