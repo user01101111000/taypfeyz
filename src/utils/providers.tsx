@@ -13,7 +13,10 @@ const Providers: React.FC<ProvidersProps> = (props: ProvidersProps): React.JSX.E
     React.useEffect((): void => {
         ReactGA.initialize(import.meta.env.VITE_GA_ID);
 
-        ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+        setTimeout((): void => {
+            ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+        }, 1000);
+
     }, []);
 
     return <CodeProvider>
