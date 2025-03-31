@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>taypfeyz</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,21 +12,32 @@
 
     <link rel="stylesheet" href="src/style/index.css">
 
-    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96"/>
-    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg"/>
-    <link rel="shortcut icon" href="/icons/favicon.ico"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png"/>
-    <link rel="manifest" href="/site.webmanifest"/>
-    <meta name="apple-mobile-web-app-title" content="taypfeyz"/>
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="taypfeyz" />
 
     <meta name="theme-color" content="#ff6600" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#333333" media="(prefers-color-scheme: dark)">
 
     <meta name="google-site-verification" content="F1F65UBOLfzHz6q5Tbtdf4-rJpNBrebbqE9IxW5KwQo" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z96KCF3X0W"></script>
+    <script type="module">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', import.meta.env.VITE_GA_ID);
+    </script>
 </head>
+
 <body>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
+
 </html>
