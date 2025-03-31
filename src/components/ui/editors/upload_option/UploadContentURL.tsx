@@ -42,7 +42,7 @@ const UploadContentURL: React.FC<UploadContentURLProps> = ({ setOpen }: UploadCo
     return <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <p className="text-white font-bold">🔗 URL</p>
         <Input className="text-white" type="text"
-            placeholder="https://jsonplaceholder.typicode.com/users" {...register("url")} autoComplete="off" />
+            placeholder="https://jsonplaceholder.typicode.com/users" {...register("url")} />
         {errors.url?.message && <p className="text-red-500 text-sm">{errors.url.message}</p>}
 
         <Button disabled={loading} className="cursor-pointer">
